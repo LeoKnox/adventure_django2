@@ -23,4 +23,5 @@ router.register(r'rooms', views.RoomView, 'room')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls))
 ]
