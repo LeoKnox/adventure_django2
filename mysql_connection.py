@@ -6,4 +6,6 @@ mydb = mysql.connector.connect(
     password="passroot"
 )
 
-print(mydb)
+mycursor = mydb.coursor()
+
+mycursor.execute("CREATE DATA mydatabase")
