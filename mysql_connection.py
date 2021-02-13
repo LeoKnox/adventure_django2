@@ -9,7 +9,13 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
-mycursor.execute("ALTER TABLE characters ADD COLUMN lvl INT")
+sql = "INSERT INTO characters (name, char_class, lvl) VALUES (%s, %s, %s)"
+val = ("Elric", "Albino", 8)
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+#mycursor.execute("ALTER TABLE characters ADD COLUMN lvl INT")
 
 #mycursor.execute("CREATE TABLE characters (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), char_class VARCHAR(255))")
 
