@@ -9,11 +9,14 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
+mycursor.execute("CREATE TABLE character (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), char_class VARCHAR(255))")
+'''
 mycursor.Execute("SHOW TABLES")
 
 for y in mycursor:
     print(y)
-    
+'''
+
 #mycursor.execute("CREATE TABLE customer (name VARCHAR(255), address VARCHAR(255))")
 
 # mycursor.execute("CREATE DATA mydatabase")
