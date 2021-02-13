@@ -15,6 +15,8 @@ mycursor.execute(sql, val)
 
 mydb.commit()
 
+print("1 character inserted, Char ID: ", mycursor.lastrowid)
+
 #mycursor.execute("ALTER TABLE characters ADD COLUMN lvl INT")
 
 #mycursor.execute("CREATE TABLE characters (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), char_class VARCHAR(255))")
