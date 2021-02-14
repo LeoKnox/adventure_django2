@@ -13,7 +13,10 @@ mycursor.execute("SELECT * FROM characters")
 
 myresult = mycursor.fetchall()
 
-mycursor.execute("SELECT name, char_class FROM characters WHERE char_name = 'ELric'") 
+sql = "SELECT name, char_class FROM characters WHERE name = %s"
+char_class = ("Elric")
+
+mycursor.execute(sql, char_class)
 
 mysingle = mycursor.fetchone()
 
