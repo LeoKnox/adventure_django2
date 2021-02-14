@@ -13,6 +13,8 @@ mycursor.execute("SELECT * FROM characters")
 
 myresult = mycursor.fetchall()
 
+mycursor.execute("SELECT name, char_class FROM characters") 
+
 mysingle = mycursor.fetchone()
 
 print(mysingle)
