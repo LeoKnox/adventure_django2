@@ -9,7 +9,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
-mycursor.execute("SELECT * FROM characters")
+mycursor.execute("SELECT * FROM characters ORDER BY char_class")
 
 myresult = mycursor.fetchall()
 
