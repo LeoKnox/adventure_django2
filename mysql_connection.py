@@ -9,13 +9,21 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
+mycursor.execute("SELECT * FROM characters")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)
+
+'''
 sql = "INSERT INTO characters (name, char_class, lvl) VALUES (%s, %s, %s)"
 val = ("Elric", "Albino", 8)
 mycursor.execute(sql, val)
 
 mydb.commit()
-
-print("1 character inserted, Char ID: ", mycursor.lastrowid)
+'''
+#print("1 character inserted, Char ID: ", mycursor.lastrowid)
 
 #mycursor.execute("ALTER TABLE characters ADD COLUMN lvl INT")
 
