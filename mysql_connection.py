@@ -9,6 +9,15 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
+sql = "DELETE FROM characters WHERE name = 'FrogMan'"  # without WHERE all characters deleted
+
+mycursor.execute(sql)
+
+mydb.commit()       # no commit no delete
+
+print(mucursor.rowcount, "record deleted")
+
+'''
 mycursor.execute("SELECT * FROM characters ORDER BY char_class DESC")
 
 myresult = mycursor.fetchall()
@@ -24,6 +33,7 @@ print(mysingle)
 
 for x in myresult:
     print(x)
+'''
 
 '''
 sql = "INSERT INTO characters (name, char_class, lvl) VALUES (%s, %s, %s)"
