@@ -9,13 +9,24 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
-sql = "DELETE FROM characters WHERE name = 'FrogMan'"  # without WHERE all characters deleted
+mycursor = mydb.cursor()
+
+sql = "UPDATE characters SET  char_class='Warrior' WHERE name='Elric'"
 
 mycursor.execute(sql)
+
+mydb.commit()
+
+'''
+sql = "DELETE FROM characters WHERE name = %s"  # without WHERE all characters deleted
+char_name = ("Frogman")     # use with %s to prvent sql injection
+
+mycursor.execute(sql, char_name)
 
 mydb.commit()       # no commit no delete
 
 print(mucursor.rowcount, "record deleted")
+'''
 
 '''
 mycursor.execute("SELECT * FROM characters ORDER BY char_class DESC")
