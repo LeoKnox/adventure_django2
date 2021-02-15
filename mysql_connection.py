@@ -11,7 +11,12 @@ mycursor = mydb.coursor()
 
 mycursor = mydb.cursor()
 
-sql = "UPDATE characters SET  char_class='Warrior' WHERE name='Elric'"
+sql = "UPDATE characters SET  char_class=%s WHERE name=%s"
+val = ("Warrior", "Elric")
+
+mycursor.execute(sql, val)
+
+mydb.commit()
 
 mycursor.execute(sql)
 
