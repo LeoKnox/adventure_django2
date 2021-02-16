@@ -13,7 +13,14 @@ sql = "SELECT \
     characters.name AS character \
     weapon.name AS weapon \
     FROM characters \
-    INNER JOIN weapon ON characters.weap = weapon.id"
+    LEFT JOIN weapon ON characters.weap = weapon.id"
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)
 
 '''
 mycursor.execute("SELECT * FROM characters LIMIT OFFSET 2")
