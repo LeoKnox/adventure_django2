@@ -9,6 +9,13 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
+sql = "SELECT \
+    characters.name AS character \
+    weapon.name AS weapon \
+    FROM characters \
+    INNER JOIN weapon ON characters.weap = weapon.id"
+
+'''
 mycursor.execute("SELECT * FROM characters LIMIT OFFSET 2")
 
 #mycursor.execute("SELECT * FROM characters LIMIT 5")
