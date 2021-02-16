@@ -13,7 +13,7 @@ sql = "SELECT \
     characters.name AS character \
     weapon.name AS weapon \
     FROM characters \
-    LEFT JOIN weapon ON characters.weap = weapon.id"
+    RIGHT JOIN weapon ON characters.weap = weapon.id"
 
 mycursor.execute(sql)
 
