@@ -9,13 +9,15 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.coursor()
 
-mycursor.execute("SELECT * FROM characters LIMIT 5")
+mycursor.execute("SELECT * FROM characters LIMIT OFFSET 2")
+
+#mycursor.execute("SELECT * FROM characters LIMIT 5")
 
 myresult = mycursor.fetchall()
 
 for x in myresult:
     print(x)
-    
+'''
 '''
 sql = "UPDATE characters SET  char_class=%s WHERE name=%s"
 val = ("Warrior", "Elric")
