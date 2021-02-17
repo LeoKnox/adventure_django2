@@ -9,4 +9,4 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("CREATE TABLE characters (name VARCHAR(99), description VARCHAR(255))")
+mycursor.execute("CREATE TABLE rooms (name VARCHAR(99), description VARCHAR(255))")
