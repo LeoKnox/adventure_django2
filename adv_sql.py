@@ -3,9 +3,8 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="root"
+    password="root",
+    database=mysqladv
 )
 
 mycursor = mydb.cursor()
-
-mycursor.execute("CREATE DATABASE mysqladv")
