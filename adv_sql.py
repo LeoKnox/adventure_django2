@@ -9,8 +9,8 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "INSERT INTO rooms (id, name, description) VALUES (%s, %s, %s)"
-val = (1, "Entry", "Entry way")
+sql = "INSERT INTO rooms (name, description, id) VALUES (%s, %s, %s)"
+val = ("Entry", "Entry way",1)
 mycursor.execute(sql, val)
 
 #mycursor.execute("ALTER TABLE rooms ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
