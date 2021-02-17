@@ -9,8 +9,6 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "DROP TABLE characters"
-
-mycursor.execute(sql)
+mycursor.execute("ALTER TABLE rooms ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
 
 #mycursor.execute("CREATE TABLE rooms (name VARCHAR(99), description VARCHAR(255))")
