@@ -11,7 +11,10 @@ mycursor = mydb.cursor()
 
 sql = "INSERT INTO rooms (name, description) VALUES (%s, %s)"
 val = ("Entry", "Entry way")
+
 mycursor.execute(sql, val)
+
+mydb.commit()
 
 #mycursor.execute("ALTER TABLE rooms ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
 
