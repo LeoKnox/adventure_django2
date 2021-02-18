@@ -9,7 +9,16 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("ALTER TABLE rooms ADD COLUMN width INT, ADD COLUMN length INT")
+sql = "UPDATE rooms SET width = 5"
+
+mycursor.execute(sql)
+
+sql = "UPDATE rooms SET length = 5"
+
+mycursor.execute(sql)
+
+mydb.commit()
+#mycursor.execute("ALTER TABLE rooms ADD COLUMN width INT, ADD COLUMN length INT")
 
 '''
 sql = "INSERT INTO rooms (name, description) VALUES (%s, %s)"
