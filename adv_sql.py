@@ -9,7 +9,13 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("CREATE TABLE doors (texture VARCHAR(50), room_entry VARCHAR(50), room_exit VARCHAR(50), wall VARCHAR(50), position INT)")
+sql = "INSERT INTO rooms (name, description, width, length) VALUES (%s, %s, %s, %s)"
+val = ("Guard", "Guard Room", 7, 8)
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+#mycursor.execute("CREATE TABLE doors (texture VARCHAR(50), room_entry VARCHAR(50), room_exit VARCHAR(50), wall VARCHAR(50), position INT)")
 
 '''
 sql = "UPDATE rooms SET width = 5"
