@@ -9,10 +9,21 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "INSERT INTO doors (texture, room_entry, room_exit, wall, position) VALUES (%s, %s, %s, %s, %s)"
+#sql = "INSERT INTO doors (texture, room_entry, room_exit, wall, position) VALUES (%s, %s, %s, %s, %s)"
 #val = ("wood", "Entry", "Guard", "South", 2)
-val = ("wood", "Guard", "Entry", "West", 5)
-mycursor.execute(sql, val)
+sql = "SELECT \
+    rooms.name AS room, \
+    doors.room_exit AS this_door \
+    FROM rooms \
+    LEFT JOIN doors ON rooms.name = doors.room_entry"
+#val = ("wood", "Guard", "Entry", "West", 5)
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)
+
 
 '''
 sql = "INSERT INTO rooms (name, description, width, length) VALUES (%s, %s, %s, %s)"
