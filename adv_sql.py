@@ -13,7 +13,7 @@ mycursor = mydb.cursor()
 #val = ("wood", "Entry", "Guard", "South", 2)
 sql = "SELECT \
     rooms.name AS room, \
-    doors.room_exit AS this_door \
+    doors.texture, doors.room_exit AS this_door \
     FROM rooms \
     LEFT JOIN doors ON rooms.name = doors.room_entry"
 #val = ("wood", "Guard", "Entry", "West", 5)
