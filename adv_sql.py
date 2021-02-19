@@ -10,7 +10,8 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 sql = "INSERT INTO doors (texture, room_entry, room_exit, wall, position) VALUES (%s, %s, %s, %s, %s)"
-val = ("wood", "Entry", "Guard", "South", 2)
+#val = ("wood", "Entry", "Guard", "South", 2)
+val = ("wood", "Guard", "Entry", "West", 5)
 mycursor.execute(sql, val)
 
 '''
