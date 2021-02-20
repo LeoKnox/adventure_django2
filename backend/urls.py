@@ -21,7 +21,11 @@ from room import views
 router = routers.DefaultRouter()
 router.register(r'rooms', views.RoomView, 'room')
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
-]
+urlpatterns = patterns(
+    'backend.views',
+    url(r'^$', 'home')
+
+    # api
+    url(r'^api/v1/rooms/$', 'room_collection'),
+    url(r'^api/v1/rooms/(?P<pk>[0-9]+)$', 'room_element')
+)
