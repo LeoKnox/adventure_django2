@@ -12,7 +12,7 @@ def room_list(request):
         serializer = RoomSerializer(rooms, many=True)
         return JsonResponse(serializer.data, safe=False)
     
-    elif request.method = 'POST':
+    elif request.method == 'POST':
         data = JSONParser().parse(requst)
         if serializer.is_valid():
             serializer.save()
@@ -38,6 +38,6 @@ def room_detail(request, pk):
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=400)
     
-    elif request.method = 'DELETE':
+    elif request.method == 'DELETE':
         room.delete()
         return HttpResponse(status=204)
