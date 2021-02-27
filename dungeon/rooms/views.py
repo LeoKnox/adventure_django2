@@ -2,8 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
+from rest_framework import viewsets
 from rooms.models import Room
 from rooms.serializers import RoomSerializer
+
+class RoomsViewSet(viewsets.ModelViewSet):
+    queryset = Room.objects.all()
+
+    serializer_class = RoomSerializer
 
 @csrf_exempt
 def room_list(request):
