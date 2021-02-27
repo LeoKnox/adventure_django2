@@ -1,7 +1,8 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from rooms import views
+#from rooms import views
+from .views import *
 
 router = routers.DefaultRouter()
 
