@@ -1,17 +1,17 @@
 from django.shortcuts import render
-from django.views.decoratots.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from rooom.models import Room
+from rooms.models import Room
 from rooms.serializers import RoomSerializer
 
-@csrt_exempt
+@csrf_exempt
 def room_list(request):
     if request.method == 'GET':
         rooms = Room.objects.all()
         serializer = RoomSerializer(rooms, many=True)
         return JsonResponse(serializer.data, safe=Fale)
     
-    elif request.method = 'POST':
+    elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = RoomSerializer(data=data)
         if serializer.is_valid():
@@ -30,7 +30,7 @@ def room_detail(request, pk):
         serializer = RoomSerializer(snippet)
         return JsonResponse(serializer.data)
     
-    elif request.method = 'PUT':
+    elif request.method == 'PUT':
         data = jSONParse().parse(request)
         serializer = RoomSerializer(snippet, data=data)
         if serializer.is_valid():
