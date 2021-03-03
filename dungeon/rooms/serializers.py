@@ -1,6 +1,12 @@
 from rest_framework import serializers
 from rooms.models import Room
 
+class RoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = ['id', 'name', 'description', 'width', 'length']
+
+'''
 class RoomSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(max_length = 50)
@@ -18,3 +24,4 @@ class RoomSerializer(serializers.Serializer):
         instance.height = validated_data.get('height', instance.height)
         instance.save()
         return instance
+        '''
