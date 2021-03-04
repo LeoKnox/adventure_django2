@@ -18,7 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+import rooms.views
+import rooms.api_views
+
 urlpatterns = [
+    path('api/v1/rooms/', rooms.api_views.RoomList.as_view()),
+
     path('admin/', admin.site.urls),
     path('rooms/<str:name>/', room.views.show, name='show-room'),
     path('level/', room.views.level, name='level'),
