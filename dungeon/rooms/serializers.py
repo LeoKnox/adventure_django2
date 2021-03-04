@@ -3,25 +3,11 @@ from rooms.models import Room
 
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Room
-        fields = ['id', 'name', 'description', 'width', 'length']
-
-'''
-class RoomSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField(max_length = 50)
-    description = serializers.CharField()
-    width = Serializers.IntegerField()
-    height = Serializers.IntegerField()
-
-    def create(self, validated_data):
-        return Room.objects.create(**validated_data)
+        model = Product
+        fields = ('name', 'description', 'length', 'width')
     
-    def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.description = validated_data.get('description', instance.description)
-        instance.width = validated_data.get('width', instance.width)
-        instance.height = validated_data.get('height', instance.height)
-        instance.save()
-        return instance
-        '''
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['is_empty'] = instance.is_empty()
+        data['random_encounter'] = instance.random_encounter()
+        return data
