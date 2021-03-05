@@ -1,10 +1,10 @@
 from django.db import models
 
 class Room(models.Model):
-    MONSTERS = [('Orc', 'Orc'), ('Skeleton', 'Skeleton'), ('Dragon', 'Dragon')]
+    SHAPES = [('Square', 'Square'), ('Circle', 'Circle'), ('Oval', 'Oval')]
     name = models.CharField(max_length = 50)
     description = models.TextField()
-    monster = models.CharField(max_length = 100, choices=MONSTERS)
+    shape = models.CharField(max_length = 100, choices=SHAPES)
     width = models.IntegerField()
     heigh = models.IntegerField()
     doors = models.ManyToManyField('Door')
