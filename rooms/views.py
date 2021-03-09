@@ -14,5 +14,8 @@ def room_detail(request, room_id):
         raise Http404('Room does not exist. Go Build it!')
     return render(request, 'room_detail.html', {'room': room})
 
+def room_create(request):
+    return render(request, 'room_create.html')
+
 def room_edit(request, room_id):
     return render(request, 'room_edit.html')
