@@ -15,4 +15,4 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def room_edit(request, room_id):
-    return render(requst, 'room_edit.html')
+    return render(request, 'room_edit.html')
