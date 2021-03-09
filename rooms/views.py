@@ -13,3 +13,6 @@ def room_detail(request, room_id):
     except Room.DoesNotExist:
         raise Http404('Room does not exist. Go Build it!')
     return render(request, 'room_detail.html', {'room': room})
+
+def room_edit(request, room_id):
+    return render(requst, 'room_edit.html')
