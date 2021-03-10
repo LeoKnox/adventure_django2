@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 
-from .models import Room
+from .models import Room, Door
 
 def home(request):
     rooms = Room.objects.all()
@@ -15,6 +15,10 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def room_create(request):
+    new_room = Room.objects.create(name = 'Tower', description='Tall room', shape='Square', width=7, height=7)
+    new_door = Door(next_room='Guard')
+    new_door.save()
+    new_room.doors.add(new_door)
     return render(request, 'room_create.html')
 
 def room_edit(request, room_id):
