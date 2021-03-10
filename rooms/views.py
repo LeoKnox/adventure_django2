@@ -19,7 +19,8 @@ def room_create(request):
     new_door = Door(next_room='Guard')
     new_door.save()
     new_room.doors.add(new_door)
-    return render(request, 'room_create.html')
+    shapes = ['Square', 'Circle', 'Oval']
+    return render(request, 'room_create.html', {'shapes': shapes})
 
 def room_edit(request, room_id):
     return render(request, 'room_edit.html')
