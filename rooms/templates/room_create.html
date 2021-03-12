@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Create Room</h1>
-<form name="create" action= "{% url 'rooms/create' %}" method="POST">
-    (% csrf_token %)
+<form name="create" action= "/rooms/create" method="POST">
+    {% csrf_token %}
     <input type="text" name="name" />
     <input type="submit" value="Create">
 </form>
