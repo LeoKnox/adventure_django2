@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
 from .models import Room, Door
@@ -20,7 +20,7 @@ def room_create(request):
     new_door.save()
     new_room.doors.add(new_door)
     if request.method == "POST":
-        return render(request, 'home.html')
+        return redirect('home')
     return render(request, 'room_create.html')
 
 def room_edit(request, room_id):
