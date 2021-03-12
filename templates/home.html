@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>All Rooms!</h1>
+
+<div>
+    {% for room in rooms %}
+        <a href="{% url 'room_detail' room.id %}">
+            <h3>{{ room.name|capfirst }}</h3>
+        </a>
+        <p class="hidden">{{ room.description }}</p>
+        <p>{{ room.shape }}</p>
+        <p>{{ room.width }}</p>
+        <p>{{ room.height }}</p>
+        {% if room.doors.all %}
+            {% for door in room.doors.all %}
+                <p>{{ door.next_room }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
