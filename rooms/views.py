@@ -16,11 +16,13 @@ def room_detail(request, room_id):
 
 def room_create(request):
     if request.method == "POST":
-        
-        #new_room = Room.objects.create(name = 'Tower', description='Tall room', shape='Square', width=7, height=7)
         new_room = Room()
         new_room.name = request.POST.get('name')
-        print (new_room.name)
+        new_room.description = request.POST.get('description')
+        new_room.shape = request.POST.get('shape')
+        new_room.width = request.POST.get('width')
+        new_room.height = request.POST.get('height')
+        new_room.save()
         new_door = Door(next_room='Guard')
         #new_door.save()
         #new_room.doors.add(new_door)
