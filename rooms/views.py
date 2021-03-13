@@ -18,7 +18,9 @@ def room_create(request):
     if request.method == "POST":
         
         #new_room = Room.objects.create(name = 'Tower', description='Tall room', shape='Square', width=7, height=7)
-        print (request.POST.get('name'))
+        new_room = Room()
+        new_room.name = request.POST.get('name')
+        print (new_room.name)
         new_door = Door(next_room='Guard')
         #new_door.save()
         #new_room.doors.add(new_door)
