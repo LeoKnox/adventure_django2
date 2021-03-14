@@ -31,7 +31,8 @@ def room_create(request):
         #new_door.save()
         #new_room.doors.add(new_door)
         return redirect('home')
-    return render(request, 'room_create.html')
+    doors = Door.objects.all()
+    return render(request, 'room_create.html', {'doors': doors})
 
 def room_edit(request, room_id):
     return render(request, 'room_edit.html')
