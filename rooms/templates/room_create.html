@@ -18,6 +18,13 @@
     <label>Height: </label>
     <input type="number" name="height" />
     <br>
+    <select name="doors" id="doors" form=door_form">
+        {% for door in doors %}
+            <option value="door">{% door.id %}</option>
+        {% endfor %}
+        <option>red</option>
+        <option>blue</option>
+    </select>
     <input type="submit" value="Create">
 </form>
 {% endblock %}
