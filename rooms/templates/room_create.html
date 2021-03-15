@@ -20,10 +20,8 @@
     <br>
     <select name="doors" id="doors" form=door_form">
         {% for door in doors %}
-            <option value="door">{% door.id %}</option>
+            <option value="door">{{ door.next_room }}</option>
         {% endfor %}
-        <option>red</option>
-        <option>blue</option>
     </select>
     <input type="submit" value="Create">
 </form>
