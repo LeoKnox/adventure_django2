@@ -18,7 +18,7 @@
     <label>Height: </label>
     <input type="number" name="height" />
     <br>
-    <select name="doors" id="doors" form=door_form">
+    <select name="doors" id="doors">
         {% for door in doors %}
             <option value="door">{{ door.next_room }}</option>
         {% endfor %}
