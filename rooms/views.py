@@ -21,17 +21,21 @@ def room_delete(request, room_id):
 def room_create(request):
     if request.method == "POST":
         new_room = Room()
+        new_door = Door()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
         new_room.shape = request.POST.get('shape')
         new_room.width = request.POST.get('width')
         new_room.height = request.POST.get('height')
+        new_door = request.POST.get('door')
+        new_room.doors.append(request.POST.get(new_door))
         new_room.save()
         new_door = Door(next_room='Guard')
         #new_door.save()
         #new_room.doors.add(new_door)
         return redirect('home')
     doors = Door.objects.all()
+    print(doors[0])
     return render(request, 'room_create.html', {'doors': doors})
 
 def room_edit(request, room_id):
