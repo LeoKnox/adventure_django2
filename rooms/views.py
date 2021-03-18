@@ -20,7 +20,7 @@ def room_delete(request, room_id):
 
 def room_update(request, room_id):
     edit_room = Room.odjects.get(pk = room_id)
-    return render(request, 'update.html', {'room_edit.html': edit_room})
+    return render(request, 'room_edit.html', {'edit_room': edit_room})
 
 def room_create(request):
     if request.method == "POST":
