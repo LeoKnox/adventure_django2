@@ -18,6 +18,10 @@ def room_delete(request, room_id):
     Room.objects.get(pk = room_id).delete()
     return redirect('home')
 
+def room_update(request, room_id):
+    edit_room = Room.odjects.get(pk = room_id)
+    return render(request, 'update.html', {'edit_room': edit_room})
+
 def room_create(request):
     if request.method == "POST":
         new_room = Room()
@@ -28,7 +32,7 @@ def room_create(request):
         new_room.width = request.POST.get('width')
         new_room.height = request.POST.get('height')
         new_door = request.POST.get('door')
-        new_room.doors.append(request.POST.get(new_door))
+        new_room.doors.add(request.POST.get(new_door))
         new_room.save()
         new_door = Door(next_room='Guard')
         #new_door.save()
