@@ -19,6 +19,9 @@
                 <p>{{ door.next_room }}</p>
             {% endfor %}
         {% endif %}
+        <a href="{% url 'room_edit' room.id %}">
+            <button>Edit</button>
+        </a>
     {% endfor %}
 </div>
 {% endblock %}
