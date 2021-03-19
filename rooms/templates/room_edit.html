@@ -19,11 +19,9 @@
     <input type="number" name="height" placeholder="{{ edit_room.height }}" />
     <br>
     <input type="text" list="doors" />
-    <datalist name="doors" id="doors">
-        {% for door in edit_room.doors.all %}
-            <option value="door">{{ door.next_room }}</option>
-        {% endfor %}
-    </datalist>
+    {% for door in edit_room.doors.all %}
+        <p>{{ door.next_room }}</p>
+    {% endfor %}
     <input type="submit" value="Create">
 </form>
 {% endblock %}
