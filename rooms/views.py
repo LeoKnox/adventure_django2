@@ -40,4 +40,6 @@ def room_create(request):
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
+    if request.method == "POST":
+        print(request.POST.get('door.next_room'))
     return render(request, 'room_edit.html', {'edit_room': edit_room})
