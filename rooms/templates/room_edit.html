@@ -20,8 +20,8 @@
     <br>
     <input type="text" list="doors" />
     <datalist name="doors" id="doors">
-        {% for door in doors %}
-            <option value="door">{{ door.next_room }}</option>
+        {% for door in edit_room.doors %}
+            <option value="door">{{ door.next_room.all }}</option>
         {% endfor %}
     </datalist>
     <input type="submit" value="Create">
