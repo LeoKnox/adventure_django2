@@ -33,7 +33,6 @@ def room_create(request):
         new_door = Door(next_room='Entry')
         new_door.save()
         new_room.doors.add(new_door)
-        print(request.POST.doors)
         return redirect('home')
     doors = Door.objects.all()
     return render(request, 'room_create.html', {'doors': doors})
