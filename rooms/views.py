@@ -28,14 +28,14 @@ def room_create(request):
         new_room.width = request.POST.get('width')
         new_room.height = request.POST.get('height')
         new_door = request.POST.get('door')
-        new_room.doors.add(request.POST.get(new_door))
+        #new_room.doors.add(request.POST.get(new_door))
         new_room.save()
         new_door = Door(next_room='Entry')
         new_door.save()
-        #new_room.doors.add(new_door)
+        new_room.doors.add(new_door)
+        print(request.POST.doors)
         return redirect('home')
     doors = Door.objects.all()
-    print(doors[0])
     return render(request, 'room_create.html', {'doors': doors})
 
 def room_edit(request, room_id):
