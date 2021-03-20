@@ -41,5 +41,7 @@ def room_create(request):
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     if request.method == "POST":
-        print(request.POST.get('room.door[0].next_room'))
+        next_room = request.POST.get('doors.next_room')
+        print(next_room)
+        return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room})
