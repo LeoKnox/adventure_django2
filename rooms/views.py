@@ -40,6 +40,8 @@ def room_create(request):
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
+    shapes = Room.choices()
+    print (shapes[0])
     if request.method == "POST":
         next_room = request.POST.get('doors.next_room')
         print(next_room)
