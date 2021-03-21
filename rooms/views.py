@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
-from .models import Room, Door
+from .models import Room, Door, Room.SHAPES
 
 def home(request):
     rooms = Room.objects.all()
