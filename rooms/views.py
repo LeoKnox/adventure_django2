@@ -43,7 +43,7 @@ def room_edit(request, room_id):
     shapes = Room.SHAPES
     print (shapes[1][0]) #use to populate room shape forms
     if request.method == "POST":
-        next_room = request.POST.get('door') #doesn't
+        next_room = request.POST.getlist('doors') #doesn't but does now!
         #next_room = request.POST.get('name') #works
         print(next_room)
         return redirect('home')
