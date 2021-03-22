@@ -41,9 +41,9 @@ def room_create(request):
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
-    print (shapes[1][0])
+    print (shapes[1][0]) #use to populate room shape forms
     if request.method == "POST":
-        next_room = request.POST.get('doors.next_room')
+        next_room = request.POST.getlist('doors')
         print(next_room)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room})
