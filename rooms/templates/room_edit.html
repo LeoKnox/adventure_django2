@@ -4,7 +4,7 @@
 <form name="create" action= "" method="POST">
     {% csrf_token %}
     <label>Room Name: </label>
-    <input type="text" name="name" placeholder="{{ edit_room.name }}" />
+    <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
     <br>
     <label>Description: </label>
     <input type="text" name="description" placeholder="{{ edit_room.description }}" />
@@ -19,7 +19,7 @@
     <input type="number" name="height" placeholder="{{ edit_room.height }}" />
     <br>
     {% for door in edit_room.doors.all %}
-        <input type="text" list="doors" placeholder="{{ door.next_room }}" />
+        <input type="text" list="doors" placeholder="{{ door.next_room }}" value="{{ door.next_room }}" />
     {% endfor %}
     <input type="submit" value="Create">
 </form>
