@@ -22,6 +22,7 @@
         <label>{{ door.next_room }}: </label><input type="checkbox" name="doors" value="{{ door.next_room }}" />
     {% endfor %}
     <br />
+    <p>Red: {{ doors }}</p>
     <input type="submit" value="Create">
 </form>
 {% endblock %}
