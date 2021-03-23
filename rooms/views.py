@@ -47,4 +47,4 @@ def room_edit(request, room_id):
         #next_room = request.POST.get('name') #works
         print(next_room)
         return redirect('home')
-    return render(request, 'room_edit.html', {'edit_room': edit_room})
+    return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':'red'})
