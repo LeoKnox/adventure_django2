@@ -18,11 +18,11 @@
     <label>Height: </label>
     <input type="number" name="height" placeholder="{{ edit_room.height }}" />
     <br>
-    {% for door in edit_room.doors.all %}
-        <label>{{ door.next_room }}: </label><input type="checkbox" name="doors" value="{{ door.next_room }}" />
+    {% for door in doors.all %}
+        <label>{{ door.next_room }}: </label><input type="checkbox" name="doors" value="{{ doors.next_room }}" />
     {% endfor %}
     <br />
-    <p>Red: {{ doors }}</p>
+    <p>Red: {{ edit_room.doors[0] }}</p>
     <input type="submit" value="Create">
 </form>
 {% endblock %}
