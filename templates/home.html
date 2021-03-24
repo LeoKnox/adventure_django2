@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>All Rooms!</h1>
-
+<a href="{% url 'room_create' %}"><Button>Create Room</Button></a>
 <div>
     {% for room in rooms %}
         <a href="{% url 'room_detail' room.id %}">
             <h3>{{ room.name|capfirst }}</h3>
+        </a>
+        <a href="{% url 'room_delete' room.id %}">
+            <button>Delete</button>
         </a>
         <p class="hidden">{{ room.description }}</p>
         <p>{{ room.shape }}</p>
@@ -16,6 +19,9 @@
                 <p>{{ door.next_room }}</p>
             {% endfor %}
         {% endif %}
+        <a href="{% url 'room_edit' room.id %}">
+            <button>Edit</button>
+        </a>
     {% endfor %}
 </div>
 {% endblock %}
