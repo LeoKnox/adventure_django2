@@ -18,6 +18,7 @@
     <label>Height: </label>
     <input type="number" name="height" placeholder="{{ edit_room.height }}" />
     <br>
+    <p><a href="{% url 'door_edit' room.id %}"><button>ER</button></a></p>
     {% for door in edit_room.doors.all %}
         <label>{{ door.next_room }}: </label>
         <input type="checkbox" name="doors" value="{{ door.next_room }}" />
