@@ -27,7 +27,7 @@
     <br />
     {% for d in doors %}
         <p>Available Door: {{ d }}
-            <a href="{% url 'door_delete' d.id %}"
+            <a href="{% url 'door_delete' d.id %}">
                 <button>X</button>
             </a>
         </p>

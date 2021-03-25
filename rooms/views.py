@@ -23,6 +23,7 @@ def room_delete(request, room_id):
     return redirect('home')
 
 def door_edit(request, door_id):
+    print('door id: ' + door_id)
     return redirect('room_edit', door_id)
 
 def room_create(request):
