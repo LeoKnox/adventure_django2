@@ -25,12 +25,12 @@
     {% endfor %}
     <br />
     {% for d in doors %}
-        <p>Red: {{ d }}
+        <p>Available Door: {{ d }}
             <a href="{% url 'door_delete' d.id %}"
                 <button>X</button>
             </a>
         </p>
     {% endfor %}
-    <input type="submit" value="Create">
+    <input type="submit" value="Update">
 </form>
 {% endblock %}

@@ -16,11 +16,14 @@ def room_detail(request, room_id):
 
 def door_delete(request, door_id):
     Door.objects.get(pk = door_id).delete()
-    return redirect('room_edit', door_id)
+    return redirect('home')
 
 def room_delete(request, room_id):
     Room.objects.get(pk = room_id).delete()
     return redirect('home')
+
+def door_edit(request, door_id):
+    return redirect('room_edit', door_id)
 
 def room_create(request):
     if request.method == "POST":
