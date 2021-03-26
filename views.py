@@ -14,9 +14,17 @@ def room_detail(request, room_id):
         raise Http404('Room does not exist. Go Build it!')
     return render(request, 'room_detail.html', {'room': room})
 
+def door_delete(request, door_id):
+    Door.objects.get(pk = door_id).delete()
+    return redirect('home')
+
 def room_delete(request, room_id):
     Room.objects.get(pk = room_id).delete()
     return redirect('home')
+
+def door_edit(request, door_id):
+    print('door id: ' + door_id)
+    return redirect('room_edit', door_id)
 
 def room_create(request):
     if request.method == "POST":

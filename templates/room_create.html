@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+
+{% block navbar %}
+<ul>
+    <li>Home</li>
+    <li>Create</li>
+</ul>
+{% endblock %}
+
 {% block content %}
 <h1>Create Room</h1>
 <form name="create" action= "{% url 'room_create' %}" method="POST">
