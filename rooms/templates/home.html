@@ -20,37 +20,28 @@
         </tr>
         {% for room in rooms %}
             <tr>
-                <td>{{ room.name|capfirst }}</td>
+                <td>
+                    <a href="{% url 'room_detail' room.id %}">
+                        {{ room.name|capfirst }}</td>
+                    </a>
                 <td>{{ room.shape }}</td>
                 <td>{{ room.width }}</td>
                 <td>{{ room.height }}</td>
-                <td><buton>Edit</buton></td>
+                <td>
+                    <a href="{% url 'room_edit' room.id %}">
+                        <button>Edit</button>
+                    </a>
+                </td>
             </tr>
             <tr>
                 <td colspan=4>{{ room.description }}</td>
-                <td><buton>Delete</buton></td>
+                <td>
+                    <a href="{% url 'room_delete' room.id %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
-    {% for room in rooms %}
-        <a href="{% url 'room_detail' room.id %}">
-            <h3>{{ room.name|capfirst }}</h3>
-        </a>
-        <a href="{% url 'room_delete' room.id %}">
-            <button>Delete</button>
-        </a>
-        <p class="hidden">{{ room.description }}</p>
-        <p>{{ room.shape }}</p>
-        <p>{{ room.width }}</p>
-        <p>{{ room.height }}</p>
-        {% if room.doors.all %}
-            {% for door in room.doors.all %}
-                <p>{{ door.next_room }}</p>
-            {% endfor %}
-        {% endif %}
-        <a href="{% url 'room_edit' room.id %}">
-            <button>Edit</button>
-        </a>
-    {% endfor %}
 </div>
 {% endblock %}
