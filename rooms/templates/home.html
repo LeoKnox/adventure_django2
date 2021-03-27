@@ -7,6 +7,17 @@
 <h1>All Rooms!</h1>
 <div>
     {% for room in rooms %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Shape</th>
+                <th>Width</th>
+                <th>Height</th>
+            </tr>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </table>
         <a href="{% url 'room_detail' room.id %}">
             <h3>{{ room.name|capfirst }}</h3>
         </a>
