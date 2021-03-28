@@ -3,10 +3,11 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"/>
 </head>
 
-{% block navbar %}
-{% endblock %}
-
-<h2>Dugneon stuff</h2>
+<ul class="navbar">
+    <li><a href="{% url 'home' %}" /><button>Home</button></a></li>
+    <li><a href="{% url 'room_create' %}" /><button>Create</button></a></li>
+</ul>
+<br>
 
 {% block content %}
 {% endblock %}
