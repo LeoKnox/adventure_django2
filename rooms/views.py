@@ -23,11 +23,11 @@ def room_delete(request, room_id):
     return redirect('home')
 
 def door_edit(request, door_id):
-    print('door id: ' + door_id)
     return redirect('room_edit', door_id)
 
 def room_create(request):
     if request.method == "POST":
+        '''
         new_room = Room()
         new_door = Door()
         new_room.name = request.POST.get('name')
@@ -43,6 +43,8 @@ def room_create(request):
         new_door = Door(next_room = request.POST.get(new_door))
         new_room.doors.add(new_door)
         new_door.save()
+        '''
+        print('doors ' + request.POST.get('new_door'))
         return redirect('home')
     doors = Door.objects.all()
     return render(request, 'room_create.html', {'doors': doors})
@@ -50,7 +52,7 @@ def room_create(request):
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
-    print (shapes[1][0]) #use to populate room shape forms
+    #print (shapes[1][0]) #use to populate room shape forms
     doors = Door.objects.all()
     if request.method == "POST":
         next_room = request.POST.getlist('doors') #doesn't but does now!

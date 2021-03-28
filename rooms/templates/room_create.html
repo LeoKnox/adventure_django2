@@ -22,7 +22,7 @@
     <label>Height: </label>
     <input type="number" name="height" />
     <br>
-    <input type="text" list="doors" />
+    <input type="text" list="doors" name="new_door" />
     <datalist name="doors" id="doors">
         {% for door in doors %}
             <option value="door">{{ door.next_room }}</option>
