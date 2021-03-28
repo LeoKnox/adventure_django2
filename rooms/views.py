@@ -27,7 +27,6 @@ def door_edit(request, door_id):
 
 def room_create(request):
     if request.method == "POST":
-        '''
         new_room = Room()
         new_door = Door()
         new_room.name = request.POST.get('name')
@@ -38,13 +37,12 @@ def room_create(request):
         new_door = request.POST.getlist('doors')
         new_room.doors.add(request.POST.get(new_door))
         new_room.save()
-        print("new door = " + new_door)
-        new_door = Door(next_room='Entry')
-        new_door = Door(next_room = request.POST.get(new_door))
+        #print("new door = " + new_door)
+        #new_door = Door(next_room='Entry')
+        new_door = Door(next_room = request.POST.get(doors))
         new_room.doors.add(new_door)
         new_door.save()
-        '''
-        print('doors ' + request.POST.get('new_door'))
+        #print('doors ' + request.POST.get('doors'))
         return redirect('home')
     doors = Door.objects.all()
     return render(request, 'room_create.html', {'doors': doors})
