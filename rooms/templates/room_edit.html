@@ -30,8 +30,8 @@
     <br />
     {% for d in doors %}
         <p>Available Door: {{ d }}
+            <input type="checkbox" name="doors" value="{{ door.next_room }}" />
             <a href="{% url 'door_delete' d.id %}">
-                <input type="checkbox" name="doors" value="{{ door.next_room }}" />
                 <button>X</button>
             </a>
         </p>
