@@ -35,7 +35,7 @@ def room_create(request):
         new_room.width = request.POST.get('width')
         new_room.height = request.POST.get('height')
         new_door = request.POST.getlist('doors')
-        new_room.doors.add(request.POST.get(new_door))
+        new_room.doors.add(new_door)
         new_room.save()
         #print("new door = " + new_door)
         #new_door = Door(next_room='Entry')
