@@ -24,11 +24,11 @@
     <br>
     <label>Doors: </label>
     <input type="text" list="doors" name="doors" />
-    <datalist name="doors" id="doors">
+    <datalist name="doors" multiple="multiple" id="doors">
         {% for door in doors %}
             <option value="door">{{ door.next_room }}</option>
         {% endfor %}
-        <p>Red</p>
+        <option>Red</option>
     </datalist>
     <br/>
     <input type="submit" value="Create">
