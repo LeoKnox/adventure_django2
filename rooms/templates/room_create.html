@@ -22,12 +22,14 @@
     <label>Height: </label>
     <input type="number" name="height" />
     <br>
+    <label>Doors: </label>
     <input type="text" list="doors" name="doors" />
     <datalist name="doors" id="doors">
         {% for door in doors %}
             <option value="door">{{ door.next_room }}</option>
         {% endfor %}
     </datalist>
+    <br/>
     <input type="submit" value="Create">
 </form>
 {% endblock %}
