@@ -26,8 +26,8 @@ def room_delete(request, room_id):
 def door_edit(request, door_id):
     return redirect('room_edit', door_id)
 
-def door_add(request, new_door):
-    print('door added' + new_door)
+def door_add(request):
+    print('door added' + str(request.POST.get('new_door')))
     return redirect('room_create')
 
 def room_create(request):
