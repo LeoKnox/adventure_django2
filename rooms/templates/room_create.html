@@ -30,5 +30,11 @@
     <br/>
     <input type="submit" value="Create">
 </form>
+<form name="create" action= "" method="POST">
+    <p>
+        <input type="text" name="new_door">
+        <button>Add Door</button>
+    </p>
+</form>
 <a href="{% url 'door_add' 'door added' %}">Add Door</a>
 {% endblock %}
