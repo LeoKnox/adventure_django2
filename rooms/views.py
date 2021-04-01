@@ -36,7 +36,7 @@ def room_create(request):
         new_room.width = request.POST.get('width')
         new_room.height = request.POST.get('height')
         new_room.save()
-        new_door = Door(next_room = request.POST.getlist['doors'])
+        new_door = Door(next_room = request.POST.getlist('doors'))
         new_door.save()
         new_room.doors.add(new_door)
         return redirect('home')

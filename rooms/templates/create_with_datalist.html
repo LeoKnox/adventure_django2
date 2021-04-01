@@ -24,9 +24,12 @@
     <br>
     <label>Doors: </label>
     <input type="text" list="doors" name="doors" />
-    {% for door in doors %}
-        <p>{{ door.next_room }}<input type="checkbox" id="{{ door.id }}" value="{{ door.next_room }}"></p>
-    {% endfor %}
+    <datalist name="doors" multiple="multiple" id="doors">
+        {% for door in doors %}
+            <option value="door">{{ door.next_room }}</option>
+        {% endfor %}
+        <option>Red</option>
+    </datalist>
     <br/>
     <input type="submit" value="Create">
 </form>
