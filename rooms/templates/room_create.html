@@ -25,7 +25,7 @@
     <label>Doors: </label>
     <input type="text" list="doors" name="doors" />
     {% for door in doors %}
-        <p>{{ door.next_room }}<input type="checkbox" id="{{ door.id }}" value="{{ door.next_room }}"></p>
+        <p>{{ door.next_room }}<input type="checkbox" id="doors" value="{{ door.next_room }}"></p>
     {% endfor %}
     <br/>
     <input type="submit" value="Create">
