@@ -46,10 +46,8 @@ def room_create(request):
         print(new_door)
         for nd in new_door:
             single_door = Door(next_room = nd)
-            #single_door.save()
-            #new_room.doors.add(single_door)
-        #new_door.save()
-        #new_room.doors.add(new_door)
+            single_door.save()
+            new_room.doors.add(single_door)
         return redirect('home')
     doors = Door.objects.all()
     return render(request, 'room_create.html', {'doors': doors})
