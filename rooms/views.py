@@ -15,8 +15,9 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def door_delete(request, door_id):
-    print("door id" + str(door_id))
-    Door.objects.get(pk = door_id).clear()
+    #Door.objects.get(pk = door_id).clear()
+    Room.doors.get(pk = door_id).delete()
+    print("door id")
     return redirect('home')
 
 def room_delete(request, room_id):
