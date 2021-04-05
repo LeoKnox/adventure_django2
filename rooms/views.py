@@ -60,6 +60,7 @@ def room_edit(request, room_id):
     if request.method == "POST":
         edit_room.name = request.POST.get('name')
         edit_room.description = request.POST.get('description')
+        print(request.POST.get('description') == None)
         edit_room.shape = request.POST.get('shape')
         edit_room.width = request.POST.get('width')
         edit_room.height = request.POST.get('height')
