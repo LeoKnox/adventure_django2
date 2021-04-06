@@ -32,14 +32,14 @@
         </p>
     {% endfor %}
     <br />
-    {% for d in doors %}
-        <p>Available Door: {{ d }}
-            <input type="checkbox" name="doors" value="{{ d.next_room }}" />
-            <a href="{% url 'door_delete' d.id %}">
-                <button>XX {{ d.id }}</button>
-            </a>
-        </p>
-    {% endfor %}
-    <input type="submit" value="Update">
 </form>
+{% for d in doors %}
+    <p>Available Door: {{ d }}
+        <input type="checkbox" name="doors" value="{{ d.next_room }}" />
+        <a href="{% url 'door_delete' d.id %}">
+            <button>XX {{ d.id }}</button>
+        </a>
+    </p>
+{% endfor %}
+<input type="submit" value="Update">
 {% endblock %}
