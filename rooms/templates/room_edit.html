@@ -33,6 +33,13 @@
     {% endfor %}
     <br />
 </form>
+<form name="door_add" action= "{% url 'door_add' %}" method="POST">
+    {% csrf_token %}
+    <p>
+        <input type="text" name="new_door">
+        <button>Add Door</button>
+    </p>
+</form>
 {% for d in doors %}
     <p>Available Door: {{ d }}
         <input type="checkbox" name="doors" value="{{ d.next_room }}" />
