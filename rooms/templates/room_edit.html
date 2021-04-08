@@ -33,10 +33,10 @@
     {% endfor %}
     <br />
 </form>
-<form name="door_edit" action= "{% url 'door_add' %}" method="POST">
+<form name="door_edit" action= "{% url 'door_edit' door.id %}" method="POST">
     {% csrf_token %}
     <p>
-        <input type="text" name="new_door">
+        <input type="text" name="new_edit">
         <button>Add Door</button>
     </p>
 </form>
