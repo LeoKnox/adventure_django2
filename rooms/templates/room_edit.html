@@ -41,7 +41,7 @@
         </a>
     </p>
 {% endfor %}
-<form name="door_edit" action= "{% url 'door_edit' %}" method="POST">
+<form name="door_add" action= "{% url 'door_add' %}" method="POST">
     {% csrf_token %}
     <p>
         <input type="text" name="new_door">
