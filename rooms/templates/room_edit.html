@@ -5,8 +5,10 @@
 
 {% block content %}
 <h1>Edit {{ edit_room.name }} Room</h1>
+<p>tt {{ sroom_id }}</p>
 <form name="create" action= "" method="POST">
     {% csrf_token %}
+    <input type="hidden" id="{{edit_room.id}}" name="id" value="{{edit_room.id}}" />
     <label>Room Name: </label>
     <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
     <br>
