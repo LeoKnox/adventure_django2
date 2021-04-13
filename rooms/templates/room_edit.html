@@ -5,10 +5,8 @@
 
 {% block content %}
 <h1>Edit {{ edit_room.name }} Room</h1>
-<p>tt {{ sroom_id }}</p>
 <form name="create" action= "" method="POST">
     {% csrf_token %}
-    <input type="hidden" name="id" value="{{edit_room.id}}" />
     <label>Room Name: </label>
     <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
     <br>
@@ -43,8 +41,9 @@
         </a>
     </p>
 {% endfor %}
-<form name="door_add" action= "{% url 'door_add' %}" method="POST">
+<form name="door_add" action= "{% url 'door_edit' %}" method="POST">
     {% csrf_token %}
+    <input type="hidden" name="room_id" value="{{edit_room.id}}" />
     <p>
         <input type="text" name="new_door">
         <button>Add Door</button>
