@@ -36,7 +36,7 @@
 {% for d in doors %}
     <p>Available Door: {{ d }}
         <input type="checkbox" name="doors" value="{{ d.next_room }}" />
-        <a href="{% url 'door_delete' d.id %}">
+        <a href="{% url 'edit_delete' d.id edit_room.id %}">
             <button>XX {{ d.id }}</button>
         </a>
     </p>
