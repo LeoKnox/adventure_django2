@@ -75,7 +75,11 @@ def room_edit(request, room_id):
         if request.POST.get('height') != "":
             edit_room.height = request.POST.get('height')
         edit_room.save()
-        next_room = request.POST.getlist('doors') #doesn't but does now!
+        new_door = request.POST.getlist('doors') #doesn't but does now!
+        for nd in new_door:
+            single_door = Door(next_room = nd)
+            single_door.save()
+            edit_room.doors.add(single_door)
         #next_room = request.POST.get('name') #works
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
