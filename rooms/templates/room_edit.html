@@ -22,7 +22,6 @@
     <label>Height: </label>
     <input type="number" name="height" placeholder="{{ edit_room.height }}" />
     <br>
-    <p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
     {% for door in edit_room.doors.all %}
         <p>
             <a href="{% url 'door_delete' door.id %}">
@@ -32,7 +31,6 @@
         </p>
     {% endfor %}
     <br />
-</form>
 {% for d in doors %}
     <p>Available Door: {{ d }}
         <input type="checkbox" name="doors" value="{{ d.next_room }}" />
@@ -41,6 +39,8 @@
         </a>
     </p>
 {% endfor %}
+<p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
+</form>
 <form name="door_add" action= "{% url 'door_edit' %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="room_id" value="{{edit_room.id}}" />
