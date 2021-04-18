@@ -78,10 +78,6 @@ def room_edit(request, room_id):
         new_door = request.POST.getlist('doors') #doesn't but does now!
         for nd in new_door:
             single_door = Door.objects.get(next_room = nd)
-            #single_door.save()
-            print(single_door.id)
-            print(single_door.next_room)
             edit_room.doors.add(single_door)
-        #next_room = request.POST.get('name') #works
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
