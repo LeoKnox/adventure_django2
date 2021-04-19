@@ -77,6 +77,7 @@ def room_edit(request, room_id):
         edit_room.save()
         new_door = request.POST.getlist('doors') #doesn't but does now!
         for nd in new_door:
+            print(nd)
             single_door = Door.objects.get(next_room = nd)
             edit_room.doors.add(single_door)
         return redirect('home')
