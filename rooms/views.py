@@ -79,8 +79,8 @@ def room_edit(request, room_id):
         print("*****store store store******")
         print(new_door)
         for nd in new_door:
-            print(nd)
             single_door = Door.objects.get(next_room = nd)
+            print(single_door.id)
             edit_room.doors.add(single_door)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
