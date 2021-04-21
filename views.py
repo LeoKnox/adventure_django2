@@ -15,16 +15,28 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def door_delete(request, door_id):
-    print("door id" + str(door_id))
     Door.objects.get(pk = door_id).delete()
     return redirect('home')
+
+def edit_delete(request, door_id, room_id):
+    Door.objects.get(pk = door_id).delete()
+    return redirect('room_edit', room_id)
 
 def room_delete(request, room_id):
     Room.objects.get(pk = room_id).delete()
     return redirect('home')
 
-def door_edit(request, door_id):
-    return redirect('room_edit', door_id)
+def door_edit(request):
+    add_door = Door(next_room = request.POST.get('new_door'))
+    add_door.save()
+    room_id = request.POST.get('room_id')
+    return redirect('room_edit', room_id)
+
+def door_add(request):
+    #print('door added' + str(request.POST.get('new_door')))
+    add_door = Door(next_room = request.POST.get('new_door'))
+    add_door.save()
+    return redirect('room_create')
 
 def room_create(request):
     if request.method == "POST":
@@ -36,12 +48,15 @@ def room_create(request):
         new_room.width = request.POST.get('width')
         new_room.height = request.POST.get('height')
         new_room.save()
-        new_door = Door(next_room = request.POST.getlist('doors'))
-        new_door.save()
-        new_room.doors.add(new_door)
+        new_door = request.POST.getlist('doors')
+        for nd in new_door:
+            single_door = Door(next_room = nd)
+            single_door.save()
+            new_room.doors.add(single_door)
         return redirect('home')
     doors = Door.objects.all()
-    return render(request, 'room_create.html', {'doors': doors})
+    rooms = Room.objects.all()
+    return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms})
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
@@ -49,8 +64,24 @@ def room_edit(request, room_id):
     #print (shapes[1][0]) #use to populate room shape forms
     doors = Door.objects.all()
     if request.method == "POST":
-        next_room = request.POST.getlist('doors') #doesn't but does now!
-        #next_room = request.POST.get('name') #works
-        print(next_room)
+        if request.POST.get('name') != "":
+            edit_room.name = request.POST.get('name')
+        if request.POST.get('description') != "":
+            edit_room.description = request.POST.get('description')
+        print(request.POST.get('description') == "")
+        if request.POST.get('shape') != "":
+            edit_room.shape = request.POST.get('shape')
+        if request.POST.get('width') != "":
+            edit_room.width = request.POST.get('width')
+        if request.POST.get('height') != "":
+            edit_room.height = request.POST.get('height')
+        edit_room.save()
+        new_door = request.POST.getlist('doors') #doesn't but does now!
+        print("*****store store store******")
+        print(new_door)
+        for nd in new_door:
+            single_door = Door.objects.get(id = nd)
+            print(single_door.id)
+            edit_room.doors.add(single_door)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
