@@ -24,9 +24,13 @@
     <br>
     <label>Doors: </label>
     {% for door in doors %}
-        <p>{{ door.next_room }}<input type="checkbox" name="doors" value="{{ door.next_room }}"></p>
+        {# <p>{{ door.next_room }}<input type="checkbox" name="doors" value="{{ door.next_room }}"></p> #}
+    {% endfor %}
+    {% for room in rooms %}
+        <p>{{ room.name }}<input type="checkbox" name="doors" value="{{ room.room_name }}"></p>
     {% endfor %}
     <br/>
+    <label>Rooms: </label>
     <input type="submit" value="Create">
 </form>
 <form name="door_add" action= "{% url 'door_add' %}" method="POST">
