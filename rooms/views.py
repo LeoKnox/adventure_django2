@@ -55,7 +55,8 @@ def room_create(request):
             new_room.doors.add(single_door)
         return redirect('home')
     doors = Door.objects.all()
-    return render(request, 'room_create.html', {'doors': doors})
+    rooms = Room.objects.all()
+    return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms})
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
