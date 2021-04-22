@@ -15,6 +15,8 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def door_delete(request, door_id):
+    print("Door id")
+    print(door_id)
     Door.objects.get(pk = door_id).delete()
     return redirect('home')
 
@@ -49,7 +51,6 @@ def room_create(request):
         new_room.height = request.POST.get('height')
         new_room.save()
         new_door = request.POST.getlist('doors')
-        print(new_door)
         for nd in new_door:
             single_door = Door(next_room = nd)
             single_door.save()
