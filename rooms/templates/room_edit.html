@@ -24,10 +24,12 @@
     <br>
     {% for door in edit_room.doors.all %}
         <p>
+            Door: {{ door.next_room }}
+            <button>
             <a href="{% url 'door_delete' door.id %}">
-                Door: {{ door.next_room }}
-                <button>x</button>
+                x
             </a>
+            </button>
         </p>
     {% endfor %}
     <br />
