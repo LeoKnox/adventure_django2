@@ -19,7 +19,7 @@ def door_delete(request, door_id):
     print(door_id)
     room_id = request.POST.get('room_id')
     Door.objects.get(pk = door_id).delete()
-    return redirect('room_edit', room_id)
+    return redirect('home')
 
 def edit_delete(request, door_id, room_id):
     Door.objects.get(pk = door_id).delete()
