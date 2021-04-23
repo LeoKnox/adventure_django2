@@ -5,7 +5,9 @@ from .models import Room, Door
 
 def home(request):
     rooms = Room.objects.all()
-    return render(request, 'home.html', {'rooms': rooms})
+    print(Room.SHAPES[0][0])
+    room_shapes = Room.SHAPES
+    return render(request, 'home.html', {'rooms': rooms, 'room_shapes': room_shapes})
 
 def room_detail(request, room_id):
     try:
