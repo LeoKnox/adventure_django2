@@ -5,9 +5,7 @@ from .models import Room, Door
 
 def home(request):
     rooms = Room.objects.all()
-    print(Room.SHAPES[0][0])
-    room_shapes = Room.SHAPES
-    return render(request, 'home.html', {'rooms': rooms, 'room_shapes': room_shapes})
+    return render(request, 'home.html', {'rooms': rooms})
 
 def room_detail(request, room_id):
     try:
@@ -61,7 +59,9 @@ def room_create(request):
         return redirect('home')
     doors = Door.objects.all()
     rooms = Room.objects.all()
-    return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms})
+    print(Room.SHAPES[0][0])
+    room_shapes = Room.SHAPES
+    return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)

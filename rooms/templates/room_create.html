@@ -32,6 +32,9 @@
     <br/>
     <label>Rooms: </label>
     <input type="submit" value="Create">
+    {% for shape in room_shapes %}
+        <p>{{ shape }}</p>
+    {% endfor %}
 </form>
 <form name="door_add" action= "{% url 'door_add' %}" method="POST">
     {% csrf_token %}
