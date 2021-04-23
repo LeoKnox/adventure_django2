@@ -14,7 +14,11 @@
     <input type="text" name="description" />
     <br>
     <label>Shape: </label>
-    <input type="text" name="shape" />
+    <select name="shape">
+    {% for shape in room_shapes %}
+        <option value="{{ shape.0 }}">{{ shape.0 }}</option>
+    {% endfor %}
+    </select>
     <br>
     <label>Width: </label>
     <input type="number" name="width" />
@@ -32,9 +36,6 @@
     <br/>
     <label>Rooms: </label>
     <input type="submit" value="Create">
-    {% for shape in room_shapes %}
-        <p>{{ shape.0 }}</p>
-    {% endfor %}
 </form>
 <form name="door_add" action= "{% url 'door_add' %}" method="POST">
     {% csrf_token %}
