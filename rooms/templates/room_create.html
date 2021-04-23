@@ -33,7 +33,7 @@
     <label>Rooms: </label>
     <input type="submit" value="Create">
     {% for shape in room_shapes %}
-        <p>{{ shape }}</p>
+        <p>{{ shape.0 }}</p>
     {% endfor %}
 </form>
 <form name="door_add" action= "{% url 'door_add' %}" method="POST">
