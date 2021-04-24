@@ -43,8 +43,6 @@ def door_add(request):
 
 def room_create(request):
     if request.method == "POST":
-        new_room = Room()
-        new_door = Door()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
         new_room.shape = request.POST.get('shape')
@@ -57,9 +55,9 @@ def room_create(request):
             single_door.save()
             new_room.doors.add(single_door)
         return redirect('home')
-    doors = Door.objects.all()
+    #doors = Door.objects.all()
     rooms = Room.objects.all()
-    print(Room.SHAPES[0][0])
+    doors = Door.objects.filter(next_room = rooms['door'])
     room_shapes = Room.SHAPES
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
