@@ -57,7 +57,7 @@ def room_create(request):
         return redirect('home')
     #doors = Door.objects.all()
     rooms = Room.objects.all()
-    doors = Door.objects.filter(next_room = rooms['door'])
+    doors = Door.objects.filter(next_room == rooms['door'])
     room_shapes = Room.SHAPES
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
