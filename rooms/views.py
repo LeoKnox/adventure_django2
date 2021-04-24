@@ -55,9 +55,8 @@ def room_create(request):
             single_door.save()
             new_room.doors.add(single_door)
         return redirect('home')
-    #doors = Door.objects.all()
+    doors = Door.objects.all()
     rooms = Room.objects.all()
-    doors = Door.objects.filter(next_room == rooms['door'])
     room_shapes = Room.SHAPES
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
@@ -65,7 +64,11 @@ def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     #print (shapes[1][0]) #use to populate room shape forms
-    doors = Door.objects.all()
+    #doors = Door.objects.all()
+    doors = Room.objects.values('doors')
+    print("*******")
+    print(doors)
+    doors = Door.objects.filter()
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
