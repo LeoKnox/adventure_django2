@@ -65,7 +65,7 @@ def room_edit(request, room_id):
     shapes = Room.SHAPES
     #print (shapes[1][0]) #use to populate room shape forms
     #doors = Door.objects.all()
-    doors = edit_room.doors.values_list('next_room', flat=True)
+    doors = list(edit_room.doors.values_list('next_room', flat=True))
     print("*******")
     print(doors)
     doors = Door.objects.filter()
