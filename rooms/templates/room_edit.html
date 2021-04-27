@@ -55,7 +55,9 @@
         <button>Add Door</button>
     </p>
 </form>
-{% for dd in door_dupe %}
-    <p>* {{ dd }}</p>
+{% for d in doors %}
+{% if d not in door_dupe %}
+    <p>* {{ d }}</p>
+{% endif %}
 {% endfor %}
 {% endblock %}
