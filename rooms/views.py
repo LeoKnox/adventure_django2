@@ -91,3 +91,6 @@ def room_edit(request, room_id):
             edit_room.doors.add(single_door)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
+
+def edit_door(request, door_id):
+    return render(request, 'edit_door.html')
