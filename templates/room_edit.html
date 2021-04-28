@@ -24,20 +24,26 @@
     <br>
     {% for door in edit_room.doors.all %}
         <p>
+            Door: {{ door.next_room }}
+            <button>
             <a href="{% url 'door_delete' door.id %}">
-                Door: {{ door.next_room }}
-                <button>x</button>
+                <strong>X</strong>
             </a>
+            </button>
         </p>
     {% endfor %}
     <br />
 {% for d in doors %}
-    <p>Available Door: {{ d }}
-        <input type="checkbox" name="doors" value="{{ d.id }}" />
-        <a href="{% url 'edit_delete' d.id edit_room.id %}">
-            <button>XX {{ d.id }}</button>
-        </a>
-    </p>
+    {% if d.next_room != edit_room.name %}
+        {% if d not in door_dupe %}
+        <p>Available Door: {{ d }}
+            <input type="checkbox" name="doors" value="{{ d.id }}" />
+            <a href="{% url 'edit_delete' d.id edit_room.id %}">
+                <button><strong>X</strong></button>
+            </a>
+        </p>
+        {% endif %}
+    {% endif %}
 {% endfor %}
 <p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
 </form>
@@ -49,4 +55,11 @@
         <button>Add Door</button>
     </p>
 </form>
+{% for d in doors %}
+    {% for dd in edit_room.doors.all %}
+        {% if d != dd %}
+        <p>* {{ d }}</p>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
 {% endblock %}
