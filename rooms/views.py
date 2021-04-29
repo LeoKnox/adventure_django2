@@ -67,8 +67,10 @@ def room_edit(request, room_id):
     doors = Door.objects.all()
     ex_doors = list(Door.objects.values_list('next_room', flat=True))
     ex = "Guard"
-    door_dupe = Door.objects.exclude(next_room = edit_room.doors.values_list('next_room', flat=True))
+    door_dupe = Door.objects.filter(next_room__in = edit_room.doors.values_list('next_room', flat=True))
+    door_dupe = Door.objects.exclude(next_room__in = edit_room.doors.values_list('next_room', flat=True))
     print("*******")
+    print(doors)
     print(door_dupe)
     if request.method == "POST":
         if request.POST.get('name') != "":
