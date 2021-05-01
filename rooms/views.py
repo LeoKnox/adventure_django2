@@ -65,7 +65,7 @@ def room_edit(request, room_id):
     shapes = Room.SHAPES
     #print (shapes[1][0]) #use to populate room shape forms
     doors = Room.objects.all()
-    door_dupe = [val for val in Room.objects.values_list('doors', flat=True) if val in Room.objects.all()]
+    door_dupe = [val for val in Door.objects.values_list('next_room', flat=True) if val not in Room.objects.values_list('name', flat=True)]
     #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
     #ex_doors = list(Door.objects.values_list('next_room', flat=True))
     #door_dupe = Door.objects.filter(next_room__in = edit_room.doors.values_list('next_room', flat=True))
