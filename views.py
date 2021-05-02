@@ -63,11 +63,17 @@ def room_create(request):
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
-    #print (shapes[1][0]) #use to populate room shape forms
-    doors = Door.objects.all()
-    #doors = Door.objects.filter()
-    door_dupe = list(Door.objects.values_list('next_room', flat=True))
+    doors = Room.objects.all()
+    #doots = edit_room.doors.filter(name=)
+    door_dupe = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.filter(next_room = room_id)]
+    #door_dupe.values_list('next_room', flat=True)
+    #door_dupe = Room.objects.values_list('name', flat=True)
+    #door_dupe = Room.objects.values_list('doors', flat=True)
+    #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
+    #ex_doors = list(Door.objects.values_list('next_room', flat=True))
+    #door_dupe = Door.objects.filter(next_room__in = edit_room.doors.values_list('next_room', flat=True))
     print("*******")
+    print(doors)
     print(door_dupe)
     if request.method == "POST":
         if request.POST.get('name') != "":
