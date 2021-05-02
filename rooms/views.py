@@ -67,11 +67,7 @@ def room_edit(request, room_id):
     door_dupe = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
     #door_dupe = edit_room.doors.values_list('next_room', flat=True)
     #door_dupe.values_list('next_room', flat=True)
-    #door_dupe = Room.objects.values_list('name', flat=True)
-    #door_dupe = Room.objects.values_list('doors', flat=True)
     #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
-    #ex_doors = list(Door.objects.values_list('next_room', flat=True))
-    #door_dupe = Door.objects.filter(next_room__in = edit_room.doors.values_list('next_room', flat=True))
     print("*******")
     print(doors)
     print(door_dupe)
