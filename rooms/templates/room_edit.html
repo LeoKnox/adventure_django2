@@ -34,12 +34,14 @@
     {% endfor %}
     <br />
 {% for d in doors %}
-    <p>Available Door: {{ d.name }}
-        <input type="checkbox" name="doors" value="{{ d.id }}" />
-        <a href="{% url 'edit_delete' d.id edit_room.id %}">
-            <button><strong>X</strong></button>
-        </a>
-    </p>
+        {% if edit_room.id != d.id %}
+        <p>Available Door: {{ d.name }}
+            <input type="checkbox" name="doors" value="{{ d.id }}" />
+            <a href="{% url 'edit_delete' d.id edit_room.id %}">
+                <button><strong>X</strong></button>
+            </a>
+        </p>
+        {% endif %}
 {% endfor %}
 <p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
 </form>
