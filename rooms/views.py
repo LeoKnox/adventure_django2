@@ -89,7 +89,7 @@ def room_edit(request, room_id):
         print(new_door)
         for nd in new_door:
             #single_door = Door.objects.get(room = nd)
-            single_door = Door(nd)
+            single_door = Door(next_door = nd)
             print(single_door.next_room)
             edit_room.doors.add(single_door)
         return redirect('home')
