@@ -97,3 +97,6 @@ def room_edit(request, room_id):
 
 def edit_door(request):
     return render(request, 'edit_door.html')
+
+def about(request):
+    return render(request, 'about.html')
