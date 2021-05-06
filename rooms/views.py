@@ -95,9 +95,9 @@ def room_edit(request, room_id):
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
 
-def edit_door(request, door_id=111):
+def edit_door(request, door_id=121):
     edit_door = Door.objects.get(id = door_id)
-    return render(request, 'edit_door.html', edit_door = edit_door)
+    return render(request, 'edit_door.html', {'edit_door': edit_door})
 
 def about(request):
     return render(request, 'about.html')
