@@ -37,6 +37,7 @@
         {% if edit_room.id != d.id %}
         <p>Available Door: {{ d.name }}
             <input type="checkbox" name="doors" value="{{ d.id }}" />
+            <button><a href="{% url 'edit_door' d.id %}">Edit {{ d.id }}</a></button>
             <a href="{% url 'edit_delete' d.id edit_room.id %}">
                 <button><strong>X</strong></button>
             </a>
