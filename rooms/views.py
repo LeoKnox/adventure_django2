@@ -96,10 +96,11 @@ def room_edit(request, room_id):
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
 
 def edit_door(request, door_id=121):
+    print("edit door edit door edit door !!!!!!!!!")
     edit_door = Door.objects.get(id = door_id)
     if request.method == "POST":
         print("//..............")
-        print(request.POST.get('next_door'))
+        print(request.POST.get('next_room'))
     return render(request, 'edit_door.html', {'edit_door': edit_door})
 
 def about(request):
