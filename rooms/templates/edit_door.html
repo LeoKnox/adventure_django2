@@ -8,9 +8,9 @@
     <h1>Modify Doors</h1>
     <p>
         <form name="edit_door" action="" method="POST">
-            <p>
             {% csrf_token %}
-            Next Door: <input type="text" name="door" placeholder="{{ edit_door.next_room }}" />
+            <p>
+            Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" />
             </p>
             <button>
                 <a href="{% url 'edit_door' edit_door.id %}">
