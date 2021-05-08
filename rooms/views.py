@@ -68,9 +68,6 @@ def room_edit(request, room_id):
     #door_dupe = edit_room.doors.values_list('next_room', flat=True)
     #door_dupe.values_list('next_room', flat=True)
     #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
-    print("*******")
-    print(doors)
-    print(door_dupe)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
@@ -85,8 +82,6 @@ def room_edit(request, room_id):
             edit_room.height = request.POST.get('height')
         edit_room.save()
         new_door = request.POST.getlist('doors') #doesn't but does now!
-        print("*****store store store******")
-        print(new_door)
         for nd in new_door:
             #single_door = Door.objects.get(room = nd)
             single_door = Door(next_room = nd)
@@ -96,12 +91,12 @@ def room_edit(request, room_id):
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
 
 def edit_door(request, door_id=121):
-    print("edit door edit door edit door !!!!!!!!!")
-    print(request.method)
     edit_door = Door.objects.get(id = door_id)
     if request.method == "POST":
-        print("//..............")
         print(request.POST.get('next_room'))
+        if request.POST.get('next_room') != "":
+            edit_door.next_room = request.POST.get('next_room')
+        edit_door.save()
         return redirect('home')
     return render(request, 'edit_door.html', {'edit_door': edit_door})
 
