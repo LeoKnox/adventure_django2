@@ -44,14 +44,18 @@
         </p>
         {% endif %}
 {% endfor %}
-<p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
+<p>
+    <a href="{% url 'room_edit' edit_room.id %}">
+    <button>Update Room</button>
+    </a>
+</p>
 </form>
 <form name="door_add" action= "{% url 'door_edit' %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="room_id" value="{{edit_room.id}}" />
     <p>
         <input type="text" name="new_door">
-        <button>Add Door</button>
+        <button>Create Door</button>
     </p>
 </form>
 <form name="dd_test" action="" method="POST">
