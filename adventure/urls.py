@@ -15,6 +15,7 @@ urlpatterns = [
     path('rooms/edit_delete/<int:door_id>/<int:room_id>', views.edit_delete, name='edit_delete'),
     path('rooms/door_edit/', views.door_edit, name='door_edit'),
     path('rooms/door_add/', views.door_add, name="door_add"),
-    path('rooms/edit_door/', views.edit_door, name='edit_door'),
-    path('rooms/about/', views.about, name='about')
+    path('rooms/edit_door/<int:door_id>', views.edit_door, name='edit_door'),
+    path('rooms/about/', views.about, name='about'),
+    path('rooms/dd_test/', views.dd_test, name='dd_test') # delete after finishing door duplicate form on edit
 ]
