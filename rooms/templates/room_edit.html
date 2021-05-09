@@ -58,9 +58,10 @@
 {% csrf_token %}
 {% for dd in door_dupe %}
     <p>
-        <input type="text" name="room_add" value="{{dd}}" />
+        <input type="checkbox" name="room_add" value="{{dd}}" />
         * {{ dd }}
     </p>
 {% endfor %}
+<input type="submit" value="DD test" />
 </form>
 {% endblock %}
