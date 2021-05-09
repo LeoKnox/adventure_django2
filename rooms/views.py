@@ -100,5 +100,8 @@ def edit_door(request, door_id=121):
         return redirect('home')
     return render(request, 'edit_door.html', {'edit_door': edit_door})
 
+def dd_test(request):
+    return render(request, 'about.html')
+
 def about(request):
     return render(request, 'about.html')
