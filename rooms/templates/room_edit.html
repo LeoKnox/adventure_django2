@@ -25,7 +25,7 @@
     {% for door in edit_room.doors.all %}
         <p>
             Door: {{ door.next_room }}
-            <button><a href="{% url 'edit_door' door.id %}">Edit {{ door.id }}</a></button>
+            <button><a href="{% url 'edit_door' door.id %}">Edit</a></button>
             <button>
             <a href="{% url 'door_delete' door.id %}">
                 <strong>X</strong>
@@ -54,7 +54,12 @@
         <button>Add Door</button>
     </p>
 </form>
+<form>
 {% for dd in door_dupe %}
-    <p>* {{ dd }}</p>
+    <p>
+        <input type="text" value="{{dd}}" />
+        * {{ dd }}
+    </p>
 {% endfor %}
+</form>
 {% endblock %}
