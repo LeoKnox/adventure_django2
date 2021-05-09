@@ -101,6 +101,8 @@ def edit_door(request, door_id=121):
     return render(request, 'edit_door.html', {'edit_door': edit_door})
 
 def dd_test(request):
+    if request.method == "POST":
+        request.POST.get('room_add')
     return render(request, 'about.html')
 
 def about(request):

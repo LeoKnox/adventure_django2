@@ -54,10 +54,11 @@
         <button>Add Door</button>
     </p>
 </form>
-<form>
+<form name="dd_test" action="" method="POST">
+{% csrf_token %}
 {% for dd in door_dupe %}
     <p>
-        <input type="text" value="{{dd}}" />
+        <input type="text" name="room_add" value="{{dd}}" />
         * {{ dd }}
     </p>
 {% endfor %}
