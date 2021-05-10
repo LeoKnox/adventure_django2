@@ -49,6 +49,7 @@
     <button>Update Room</button>
     </a>
 </p>
+    <input type="submit" name="edit_room" Value="Submit Edit" />
 </form>
 <form name="door_add" action= "{% url 'door_edit' %}" method="POST">
     {% csrf_token %}
@@ -66,6 +67,6 @@
         * {{ dd }}
     </p>
 {% endfor %}
-<input type="submit" value="DD test" />
+<input type="submit" name="dd_test" value="DD test" />
 </form>
 {% endblock %}
