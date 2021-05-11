@@ -25,33 +25,48 @@
     {% for door in edit_room.doors.all %}
         <p>
             Door: {{ door.next_room }}
+            <button><a href="{% url 'edit_door' door.id %}">Edit</a></button>
             <button>
             <a href="{% url 'door_delete' door.id %}">
-                <strong>X</strong>
+                <strong>Remove</strong>
             </a>
             </button>
         </p>
     {% endfor %}
     <br />
 {% for d in doors %}
-    <p>Available Door: {{ d.name }}
-        <input type="checkbox" name="doors" value="{{ d.id }}" />
-        <a href="{% url 'edit_delete' d.id edit_room.id %}">
-            <button><strong>X</strong></button>
-        </a>
-    </p>
+        {% if edit_room.id != d.id %}
+        <p>Available Door: {{ d.name }}
+            <input type="checkbox" name="doors" value="{{ d.id }}" />
+            <a href="{% url 'edit_delete' d.id edit_room.id %}">
+                <button><strong>Delete</strong></button>
+            </a>
+        </p>
+        {% endif %}
 {% endfor %}
-<p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
+<p>
+    <a href="{% url 'room_edit' edit_room.id %}">
+    <button>Update Room</button>
+    </a>
+</p>
+    <input type="submit" name="edit_room" Value="Submit Edit" />
 </form>
 <form name="door_add" action= "{% url 'door_edit' %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="room_id" value="{{edit_room.id}}" />
     <p>
         <input type="text" name="new_door">
-        <button>Add Door</button>
+        <button>Create Door</button>
     </p>
 </form>
+<form name="dd_test" action="" method="POST">
+{% csrf_token %}
 {% for dd in door_dupe %}
-    <p>* {{ dd }}</p>
+    <p>
+        <input type="checkbox" name="room_add" value="{{dd}}" />
+        * {{ dd }}
+    </p>
 {% endfor %}
+<input type="submit" name="dd_test" value="DD test" />
+</form>
 {% endblock %}

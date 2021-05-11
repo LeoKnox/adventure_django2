@@ -64,17 +64,14 @@ def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     doors = Room.objects.all()
-    #doots = edit_room.doors.filter(name=)
-    door_dupe = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.filter(next_room = room_id)]
-    #door_dupe.values_list('next_room', flat=True)
-    #door_dupe = Room.objects.values_list('name', flat=True)
-    #door_dupe = Room.objects.values_list('doors', flat=True)
-    #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
-    #ex_doors = list(Door.objects.values_list('next_room', flat=True))
-    #door_dupe = Door.objects.filter(next_room__in = edit_room.doors.values_list('next_room', flat=True))
-    print("*******")
-    print(doors)
+    door_dupe = [val for val in Door.objects.all() if val not in edit_room.doors.all()] # delete if other door_dupe later
+    for dupe in door_dupe:
+        print(Door.objects.get(next_room = dupe))
     print(door_dupe)
+    door_dupe = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
+    #door_dupe = edit_room.doors.values_list('next_room', flat=True)
+    #door_dupe.values_list('next_room', flat=True)
+    #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
@@ -89,14 +86,30 @@ def room_edit(request, room_id):
             edit_room.height = request.POST.get('height')
         edit_room.save()
         new_door = request.POST.getlist('doors') #doesn't but does now!
-        print("*****store store store******")
-        print(new_door)
         for nd in new_door:
-            single_door = Door.objects.get(id = nd)
-            print(single_door.id)
+            #single_door = Door.objects.get(room = nd)
+            single_door = Door(next_room = nd)
+            print(single_door.next_room)
             edit_room.doors.add(single_door)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
 
-def edit_door(request):
-    return render(request, 'edit_door.html')
+def edit_door(request, door_id=121):
+    edit_door = Door.objects.get(id = door_id)
+    if request.method == "POST":
+        print(request.POST.get('next_room'))
+        if request.POST.get('next_room') != "":
+            edit_door.next_room = request.POST.get('next_room')
+        edit_door.save()
+        return redirect('home')
+    return render(request, 'edit_door.html', {'edit_door': edit_door})
+
+def dd_test(request):
+    if request.method == "POST":
+        #request.POST.get('room_add')
+        #new_door = request.POST.getlist('room_add')
+        print(request.POST.getlist('room_add'))
+    return render(request, 'about.html')
+
+def about(request):
+    return render(request, 'about.html')
