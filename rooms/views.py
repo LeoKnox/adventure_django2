@@ -64,7 +64,7 @@ def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     doors = Room.objects.all()
-    doors = [val for val in edit_room.doors.values_list('next_room', flat=True) if val not in Room.objects.values_list('name', flat=True)] # delete if other door_dupe later
+    doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
     #for dupe in door_dupe:
         #print(Door.objects.get(next_room = dupe.door))
     print('***** !!!!!!! *****')
