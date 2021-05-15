@@ -65,16 +65,8 @@ def room_edit(request, room_id):
     shapes = Room.SHAPES
     doors = Room.objects.all()
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
-    print(doors)
     doors = Room.objects.filter(name__in = doors)
-    #for dupe in door_dupe:
-        #print(Door.objects.get(next_room = dupe.door))
-    print('***** !!!!!!! *****')
-    print(doors)
-    #door_dupe = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
     door_dupe = edit_room.doors.values_list('next_room', flat=True)
-    #door_dupe.values_list('next_room', flat=True)
-    #door_dupe = Room.objects.exclude(name__in = edit_room.doors)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
@@ -90,9 +82,7 @@ def room_edit(request, room_id):
         edit_room.save()
         new_door = request.POST.getlist('doors') #doesn't but does now!
         for nd in new_door:
-            #single_door = Door.objects.get(room = nd)
             single_door = Door(next_room = nd)
-            print(single_door.next_room)
             edit_room.doors.add(single_door)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
