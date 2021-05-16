@@ -15,8 +15,6 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def door_delete(request, door_id):
-    print("Door id")
-    print(door_id)
     room_id = request.POST.get('room_id')
     Door.objects.get(pk = door_id).delete()
     return redirect('home')
@@ -36,7 +34,6 @@ def door_edit(request):
     return redirect('room_edit', room_id)
 
 def door_add(request):
-    #print('door added' + str(request.POST.get('new_door')))
     add_door = Door(next_room = request.POST.get('new_door'))
     add_door.save()
     return redirect('room_create')
@@ -66,7 +63,6 @@ def room_edit(request, room_id):
     doors = Room.objects.all()
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
     doors = Room.objects.filter(name__in = doors)
-    door_dupe = edit_room.doors.values_list('next_room', flat=True)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
@@ -85,7 +81,7 @@ def room_edit(request, room_id):
             single_door = Door(next_room = nd)
             edit_room.doors.add(single_door)
         return redirect('home')
-    return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'door_dupe':door_dupe})
+    return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
 
 def edit_door(request, door_id=121):
     edit_door = Door.objects.get(id = door_id)
@@ -96,13 +92,6 @@ def edit_door(request, door_id=121):
         edit_door.save()
         return redirect('home')
     return render(request, 'edit_door.html', {'edit_door': edit_door})
-
-def dd_test(request):
-    if request.method == "POST":
-        #request.POST.get('room_add')
-        #new_door = request.POST.getlist('room_add')
-        print(request.POST.getlist('room_add'))
-    return render(request, 'about.html')
 
 def about(request):
     return render(request, 'about.html')
