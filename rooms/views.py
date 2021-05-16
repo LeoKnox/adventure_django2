@@ -64,6 +64,7 @@ def room_edit(request, room_id):
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
     doors = Room.objects.filter(name__in = doors)
     if request.method == "POST":
+        print("!!!!!! room_edit begins")
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
         if request.POST.get('description') != "":
@@ -83,10 +84,9 @@ def room_edit(request, room_id):
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
 
-def edit_door(request, door_id=121):
+def edit_door(request, door_id):
     edit_door = Door.objects.get(id = door_id)
     if request.method == "POST":
-        print(request.POST.get('next_room'))
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
         edit_door.save()
