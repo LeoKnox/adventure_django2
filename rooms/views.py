@@ -20,6 +20,7 @@ def door_delete(request, door_id):
     return redirect('home')
 
 def edit_delete(request, door_id, room_id):
+    #<a href="{% url 'edit_delete' d.id edit_room.id %}">
     Door.objects.get(pk = door_id).delete()
     return redirect('room_edit', room_id)
 
@@ -64,7 +65,6 @@ def room_edit(request, room_id):
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
     doors = Room.objects.filter(name__in = doors)
     if request.method == "POST":
-        print("!!!!!! room_edit begins")
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
         if request.POST.get('description') != "":
@@ -79,11 +79,7 @@ def room_edit(request, room_id):
         new_door = request.POST.getlist('doors') #doesn't but does now!
         edit_room.save()
         for nd in new_door:
-            print("&&&&&&&&& nd")
-            print(nd)
-            #single_door = Room.objects.get(id = nd)
             single_door = Door(next_room = nd)
-            print(single_door)
             single_door.save()
             edit_room.doors.add(single_door)
         return redirect('home')
