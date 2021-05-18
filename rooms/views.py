@@ -61,17 +61,18 @@ def room_create(request):
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
 def room_edit(request, room_id):
+    print("!!!!!!!!! room edit called")
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     doors = Room.objects.all()
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
     doors = Room.objects.filter(name__in = doors)
     if request.method == "POST":
+        print("########## POST method called")
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
         if request.POST.get('description') != "":
             edit_room.description = request.POST.get('description')
-        print(request.POST.get('description') == "")
         if request.POST.get('shape') != "":
             edit_room.shape = request.POST.get('shape')
         if request.POST.get('width') != "":
