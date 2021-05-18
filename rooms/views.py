@@ -15,13 +15,15 @@ def room_detail(request, room_id):
     return render(request, 'room_detail.html', {'room': room})
 
 def door_delete(request, door_id):
-    room_id = request.POST.get('room_id')
+    room_id = request.POST.get('door_id')
     Door.objects.get(pk = door_id).delete()
     return redirect('home')
 
 def edit_delete(request, door_id, room_id):
-    #<a href="{% url 'edit_delete' d.id edit_room.id %}">
-    Door.objects.get(pk = door_id).delete()
+    print("!!!!!")
+    print(room_id)
+    remove_door = Room.objects.get(pk = room_id)
+    remove_door.doors.remove(door_id)
     return redirect('room_edit', room_id)
 
 def room_delete(request, room_id):
