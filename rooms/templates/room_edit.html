@@ -26,7 +26,7 @@
         <p>
             Door: {{ door.next_room }}
             <button><a href="{% url 'edit_door' door.id %}">Edit</a></button>
-            <button><a href="{% url 'edit_delete' door.id edit_room.id %}"><strong>Remove</strong></a></button>
+            <button><a href="{% url rooms.views.edit_delete door.id edit_room.id %}"><strong>Remove</strong></a></button>
         </p>
     {% endfor %}
     <br />
