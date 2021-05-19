@@ -22,9 +22,10 @@ def door_delete(request, door_id):
 def edit_delete(request, door_id, room_id):
     print("!!!!!")
     print(room_id)
-    remove_door = Room.objects.get(pk = room_id)
-    remove_door.doors.remove(door_id)
-    return redirect('room_edit', room_id)
+    if request.method == "POST":
+        remove_door = Room.objects.get(pk = room_id)
+        remove_door.doors.remove(door_id)
+        return redirect('room_edit', room_id)
 
 def room_delete(request, room_id):
     Room.objects.get(pk = room_id).delete()
