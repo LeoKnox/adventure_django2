@@ -6,16 +6,18 @@
 {% block content %}
 <h1>One Room to rule them All!</h1>
 <div>
-    <h3>{{ room.name|capfirst }}</h3>
-    <p>{{ room.description }}</p>
-    <p>{{ room.shape }}</p>
-    <p>{{ room.width }}</p>
-    <p>{{ room.height }}</p>
-    {% if room.doors.all %}
-        <p>Doors</p>
-        {% for door in room.doors.all %}
-            <p>{{ door.next_room }}</p>
-        {% endfor %}
-    {% endif %}
+    <dl>
+        <dt>{{ room.name|capfirst }}</dt>
+        <dd>{{ room.description }}</dd>
+        <dd>{{ room.shape }}</dd>
+        <dd>{{ room.width }}</dd>
+        <dd>{{ room.height }}</dd>
+        {% if room.doors.all %}
+            <dt>Doors</dt>
+            {% for door in room.doors.all %}
+                <dd>{{ door.next_room }}</dd>
+            {% endfor %}
+        {% endif %}
+    </dl>
 </div>
 {% endblock %}
