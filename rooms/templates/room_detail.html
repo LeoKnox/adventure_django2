@@ -23,10 +23,8 @@
             {% endfor %}
         {% endif %}
     </dl>
-    <table>
-        {% for n in range(room.width) %}
-            <p>D</p>
-        {% endfor %}
-    </table>
 </div>
+<svg width="100" height="20">
+    <rect width="{{door.width}}*5" height="50" />
+</svg>
 {% endblock %}
