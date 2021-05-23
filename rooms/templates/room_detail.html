@@ -19,7 +19,9 @@
         {% if room.doors.all %}
             <dt>Doors</dt>
             {% for door in room.doors.all %}
-                <dd>{{ door.next_room }}</dd>
+                <dd>{{ door.next_room }}
+                {{ door.wall }}
+                {{ door.location }}</dd>
             {% endfor %}
         {% endif %}
     </dl>
