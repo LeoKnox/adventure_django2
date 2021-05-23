@@ -18,6 +18,7 @@
         <dd>{{ room.height }}</dd>
         {% if room.doors.all %}
             <dt>Doors</dt>
+            <dd>Location Wall Location</dd>
             {% for door in room.doors.all %}
                 <dd>{{ door.next_room }}
                 {{ door.wall }}
