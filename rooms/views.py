@@ -84,15 +84,18 @@ def room_edit(request, room_id):
 
 def edit_door(request, door_id):
     edit_door = Door.objects.get(id = door_id)
+    print(edit_door)
     if request.method == "POST":
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
         if request.POST.get('wall') != "":
             print (request.POST.get('wall'))
-            edit_door.wall = Door(wall = request.POST.get('wall'))
+            edit_door.wall = request.POST.get('wall')
         if request.POST.get('location') != "":
             print (request.POST.get('location'))
-            edit_door.location = Door(location = request.POST.get('location'))
+            edit_door.location = request.POST.get('location')
+        print("%%%%%%% !!!!!!!")
+        print(edit_door)
         edit_door.save()
         return redirect('home')
     return render(request, 'edit_door.html', {'edit_door': edit_door})
