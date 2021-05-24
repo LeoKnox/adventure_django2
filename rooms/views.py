@@ -88,9 +88,9 @@ def edit_door(request, door_id):
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
         if request.POST.get('wall') != "":
-            add_door = Door(wall = request.POST.get('wall'))
+            add_door.next_room = Door(wall = request.POST.get('wall'))
         if request.POST.get('location'):
-            add_door = Door(location = request.POST.get('location'))
+            add_door.next_room = Door(location = request.POST.get('location'))
         edit_door.save()
         return redirect('home')
     return render(request, 'edit_door.html', {'edit_door': edit_door})
