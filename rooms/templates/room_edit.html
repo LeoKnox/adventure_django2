@@ -32,11 +32,12 @@
     <br />
 {% for d in doors %}
         {% if edit_room.id != d.id %}
-        <p>Available Door: {{ d.name }}
+        <p>
+        <a href="{% url 'door_delete' d.id %}">
+            <button><strong>Delete</strong></button>
+        </a>
+        Available Door: {{ d.name }}
             <input type="checkbox" name="doors" value="{{ d.name }}" />
-            <a href="{% url 'door_delete' d.id %}">
-                <button><strong>Delete</strong></button>
-            </a>
         </p>
         {% endif %}
 {% endfor %}
