@@ -75,7 +75,7 @@ def room_edit(request, room_id):
             edit_room.height = request.POST.get('height')
         new_door = request.POST.getlist('doors') #doesn't but does now!
         print(new_door)
-        new_door2 = [new_door[x:x+3] for x in range(0, len(new_door), 3)]
+        new_door2 = [new_door[x:x+3] for x in range(0, len(new_door), 3) if x != '']
         print(new_door2)
         edit_room.save()
         for nd in new_door:
