@@ -25,6 +25,7 @@ def room_delete(request, room_id):
 
 def door_edit(request):
     add_door = Door(next_room = request.POST.get('new_door'))
+    print(add_door)
     add_door.save()
     room_id = request.POST.get('room_id')
     return redirect('room_edit', room_id)
@@ -84,21 +85,21 @@ def room_edit(request, room_id):
                 single_door.wall = nd[1]
             if nd[2] !="":
                 single_door.locations = nd[2]
-            print(single_door)
+            print(single_door.wall)
             single_door.save()
-            edit_room.doors.add(single_door)
+            edit_room.add(single_door)
         return redirect('home')
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
 
 def edit_door(request, door_id):
-    edit_door = Room.objects.get(id = door_id)
+    edit_door = Door.objects.get(id = door_id)
     if request.method == "POST":
         if request.POST.get('next_room') != "":
-            edit_door.rooms.next_room = request.POST.get('next_room')
+            edit_door.next_room = request.POST.get('next_room')
         if request.POST.get('wall') != "":
-            edit_door.rooms.wall = request.POST.get('wall')
+            edit_door.wall = request.POST.get('wall')
         if request.POST.get('location') != "":
-            edit_door.rooms.location = request.POST.get('location')
+            edit_door.location = request.POST.get('location')
         edit_door.save()
         return redirect('home')
     return render(request, 'edit_door.html', {'edit_door': edit_door})
