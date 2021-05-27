@@ -78,13 +78,16 @@ def room_edit(request, room_id):
         new_door2 = [new_door[x:x+3] for x in range(0, len(new_door), 3) if x != '']
         print(new_door2)
         edit_room.save()
-        for nd in new_door:
+        for nd in new_door2:
             print("!!!!!")
             print(nd)
             single_door = Door()
-            single_door.next_room = nd.next_room
-            single_door.wall = nd.wall
-            single_door.locations = nd.location
+            if nd[0] != "":
+                single_door.next_room = nd[0]
+            if nd[1] !="":
+                single_door.wall = nd[1]
+            if nd[2] !="":
+                single_door.locations = nd[2]
             single_door.save()
             edit_room.doors.add(single_door)
         return redirect('home')
