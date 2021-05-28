@@ -78,7 +78,8 @@ def room_edit(request, room_id):
         for nd in new_door2:
             print("!!!!!")
             print(nd)
-            single_door = Door(next_room = nd[0], wall = nd[1], location = nd[2])
+            if nd[0] != "":
+                single_door = Door(next_room = nd[0], wall = nd[1], location = nd[2])
             '''
             single_door.next_room = nd[0]
             single_door.wall = nd[1]
