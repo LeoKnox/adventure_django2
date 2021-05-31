@@ -22,15 +22,22 @@
     <label>Height: </label>
     <input type="number" name="height" placeholder="{{ edit_room.height }}" />
     <br>
+    <table>
+        <tr>
+            <th>Door</th>
+            <th>Wall</th>
+            <th>Location</th>
+        </tr>
     {% for door in edit_room.doors.all %}
-        <p>
-            Door: {{ door.next_room }}
-            Wall: <input type="integer" name="doors" value= "{{ door.wall }}" />
-            Location: <input type="integer" name="doors" value= "{{ door.location }}" />
+        <tr>
+            <td>{{ door.next_room }}</td>
+            <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
+            <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
             <button><a href="{% url 'edit_door' door.id %}">Edit</a></button>
             <a href="{% url 'edit_delete' door.id edit_room.id %}">Remove</a>
-        </p>
+        </tr>
     {% endfor %}
+    </table>
     <br />
 {% for d in doors %}
         {% if edit_room.id != d.id %}
