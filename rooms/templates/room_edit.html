@@ -25,6 +25,8 @@
     {% for door in edit_room.doors.all %}
         <p>
             Door: {{ door.next_room }}
+            Wall: <input type="integer" name="doors" value= "{{ door.wall }}" />
+            Location: <input type="integer" name="doors" value= "{{ door.location }}" />
             <button><a href="{% url 'edit_door' door.id %}">Edit</a></button>
             <a href="{% url 'edit_delete' door.id edit_room.id %}">Remove</a>
         </p>
@@ -38,8 +40,6 @@
         </a>
         Available Door: {{ d.name }}
             <input type="checkbox" name="doors" value="{{ d.name }}" />
-        Wall: <input type="integer" name="doors" />
-        Location: <input type="integer" name="doors" />
         </p>
         {% endif %}
 {% endfor %}
