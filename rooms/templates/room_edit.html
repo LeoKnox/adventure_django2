@@ -27,14 +27,15 @@
             <th>Door</th>
             <th>Wall</th>
             <th>Location</th>
+            <th>Options</th>
         </tr>
     {% for door in edit_room.doors.all %}
         <tr>
             <td>{{ door.next_room }}</td>
             <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
             <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
-            <button><a href="{% url 'edit_door' door.id %}">Edit</a></button>
-            <a href="{% url 'edit_delete' door.id edit_room.id %}">Remove</a>
+            <td><button><a href="{% url 'edit_door' door.id %}">Edit</a></button></td>
+            <td><a href="{% url 'edit_delete' door.id edit_room.id %}">Remove</a></td>
         </tr>
     {% endfor %}
     </table>
