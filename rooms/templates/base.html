@@ -3,11 +3,13 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css"/>
 </head>
 
-<ul class="navbar">
-    <li><a href="{% url 'home' %}" /><button>Home</button></a></li>
-    <li><a href="{% url 'room_create' %}" /><button>Create</button></a></li>
-    <li><a href="{% url 'about' %}" /><button>About</button></a></li>
-</ul>
+<div id="navbar">
+    <ul class="navbar">
+        <li><a href="{% url 'home' %}" /><button>Home</button></a></li>
+        <li><a href="{% url 'room_create' %}" /><button>Create</button></a></li>
+        <li><a href="{% url 'about' %}" /><button>About</button></a></li>
+    </ul>
+</div>
 <br>
 
 {% block content %}
