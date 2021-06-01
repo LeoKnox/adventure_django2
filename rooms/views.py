@@ -73,14 +73,14 @@ def room_edit(request, room_id):
         if request.POST.get('height') != "":
             edit_room.height = request.POST.get('height')
         new_door = request.POST.getlist('doors') #doesn't but does now!
-        new_door2 = [new_door[x:x+3] for x in range(0, len(new_door), 3) if x != '']
+        new_door2 = [new_door[x:x+3] for x in range(0, len(new_door), 2) if x != '']
         edit_room.save()
         print(new_door2)
         for nd in new_door2:
             print("!!!!!")
             print(nd)
             if nd[0] != "":
-                single_door = Door(next_room = nd[0], wall = nd[1], location = nd[2])
+                single_door = Door(wall = nd[0], location = nd[1])
             '''
             single_door.next_room = nd[0]
             single_door.wall = nd[1]
