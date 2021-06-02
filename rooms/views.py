@@ -77,11 +77,19 @@ def room_edit(request, room_id):
         edit_room.save()
         print(new_door2)
         for nd in new_door2:
+            edit_door = Door.objects.get(id = nd.id)
             print("!!!!!")
             print(nd)
+            if request.POST.get('next_room') != "":
+                edit_door.next_room = request.POST.get('next_room')
+            if request.POST.get('wall') != "":
+                edit_door.wall = request.POST.get('wall')
+            if request.POST.get('location') != "":
+                edit_door.location = request.POST.get('location')
+            edit_door.save()
+            '''
             if nd[0] != "":
                 single_door = Door(wall = nd[0], location = nd[1])
-            '''
             single_door.next_room = nd[0]
             single_door.wall = nd[1]
             single_door.locations = nd[2]

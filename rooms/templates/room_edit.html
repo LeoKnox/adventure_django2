@@ -31,6 +31,7 @@
         </tr>
     {% for door in edit_room.doors.all %}
         <tr>
+            <input type="hidden" name="id" value="{{ door.id }}">
             <td>{{ door.next_room }}</td>
             <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
             <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
