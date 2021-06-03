@@ -77,7 +77,7 @@ def room_edit(request, room_id):
         edit_room.save()
         print(new_door2)
         for nd in new_door2:
-            edit_door = Door.objects.get(id == nd[0])
+            edit_door = Door.objects.get(id == int(nd[0]))
             print("!!!!!")
             print(nd)
             print(edit_door)
