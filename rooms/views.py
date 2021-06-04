@@ -88,6 +88,9 @@ def room_edit(request, room_id):
                 edit_door.wall = request.POST.get('doors[1]')
             if request.POST.get('location') != "":
                 edit_door.location = request.POST.get('doors[2]')
+            print(request.POST.get('doors[0]'))
+            print(request.POST.get('doors[1]'))
+            print(request.POST.get('doors[2]'))
             print('******')
             print(edit_door.next_room)
             edit_door.save()
