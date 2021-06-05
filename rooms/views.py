@@ -99,7 +99,7 @@ def room_edit(request, room_id):
             '''
             #single_door.save()
             #edit_room.doors.add(single_door)
-        return redirect('home')
+        return redirect('room_edit', {'room_edit':room_id})
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
 
 def edit_door(request, door_id):
