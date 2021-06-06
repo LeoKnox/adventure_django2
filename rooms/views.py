@@ -55,7 +55,6 @@ def room_create(request):
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
 def room_edit(request, room_id):
-    print("!!!!!!!!! room edit called")
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     doors = Room.objects.all()
@@ -75,30 +74,15 @@ def room_edit(request, room_id):
         new_door = request.POST.getlist('doors') #doesn't but does now!
         new_door2 = [new_door[x:x+4] for x in range(0, len(new_door), 4) if x != '']
         edit_room.save()
-        print(new_door2)
         for nd in new_door2:
-            print(nd[0])
             edit_door = Door.objects.get(id = nd[0])
-            print("!!!!!")
-            print(nd)
-            print(edit_door)
             if nd[1] != "":
                 edit_door.next_room = nd[1]
             if nd[2] != "":
                 edit_door.wall = nd[2]
             if nd[3] != "":
                 edit_door.location = nd[3]
-            print('******')
             edit_door.save()
-            '''
-            if nd[0] != "":
-                single_door = Door(wall = nd[0], location = nd[1])
-            single_door.next_room = nd[0]
-            single_door.wall = nd[1]
-            single_door.locations = nd[2]
-            '''
-            #single_door.save()
-            #edit_room.doors.add(single_door)
         return redirect('room_edit', room_id)
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
 
