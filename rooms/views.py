@@ -75,6 +75,8 @@ def room_edit(request, room_id):
         print("--------")
         print(new_door)
         new_door2 = [new_door[x:x+4] for x in range(0, len(new_door), 4) if x != '']
+        print("++++++++")
+        print(new_door2)
         edit_room.save()
         for nd in new_door2:
             edit_door = Door.objects.get(id = nd[0])
