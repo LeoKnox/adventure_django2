@@ -32,7 +32,7 @@
     {% for door in edit_room.doors.all %}
         <tr>
             <input type="hidden" name="doors" value="{{ door.id }}">
-            <td><input name="door" value="{{ door.next_room }}" readonly/></td>
+            <td>{{ door.next_room }}</td>
             <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
             <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
             <td><button><a href="{% url 'edit_door' door.id %}">Edit</a></button></td>
@@ -48,7 +48,7 @@
             <button><strong>Delete</strong></button>
         </a>
         Available Door: {{ d.name }}
-            <input type="checkbox" name="doors" value="{{ d.name }}" />
+            <input type="checkbox" name="doord" value="{{ d.name }}" />
         </p>
         {% endif %}
 {% endfor %}
