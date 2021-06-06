@@ -76,8 +76,6 @@ def room_edit(request, room_id):
         edit_room.save()
         for nd in new_door2:
             edit_door = Door.objects.get(id = nd[0])
-            if nd[1] != "":
-                edit_door.next_room = nd[1]
             if nd[2] != "":
                 edit_door.wall = nd[2]
             if nd[3] != "":
