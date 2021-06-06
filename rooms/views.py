@@ -72,18 +72,16 @@ def room_edit(request, room_id):
         if request.POST.get('height') != "":
             edit_room.height = request.POST.get('height')
         new_door = request.POST.getlist('doors') #doesn't but does now!
+        print("--------")
+        print(new_door)
         new_door2 = [new_door[x:x+4] for x in range(0, len(new_door), 4) if x != '']
         edit_room.save()
         for nd in new_door2:
-            print(nd)
             edit_door = Door.objects.get(id = nd[0])
-            print(edit_door)
             if nd[1] != "":
                 edit_door.wall = nd[1]
             if nd[2] != "":
                 edit_door.location = nd[2]
-            print("______")
-            print(edit_door)
             edit_door.save()
         return redirect('room_edit', room_id)
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
