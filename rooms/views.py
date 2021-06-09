@@ -74,7 +74,7 @@ def room_edit(request, room_id):
         new_door = request.POST.getlist('dooradd') #doesn't but does now!
         for nd in new_door:
             if nd != "":
-                add_door = Door(next_room = request.POST.get(nd))
+                add_door = Door(next_room = nd)
                 print("@@@")
                 new_door.door_set.add(add_door)
                 add_door.save()
