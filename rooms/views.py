@@ -76,7 +76,7 @@ def room_edit(request, room_id):
             if nd != "":
                 add_door = Door(next_room = nd)
                 print("@@@")
-                new_door.door_set.add(add_door)
+                edit_room.objects.door.add(add_door)
                 add_door.save()
             print("!!")
             print(nd)
