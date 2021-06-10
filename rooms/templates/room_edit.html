@@ -59,12 +59,4 @@
 </p>
     <input type="submit" name="edit_room" Value="Submit Edit" />
 </form>
-<form name="door_add" action= "{% url 'door_edit' %}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" name="room_id" value="{{edit_room.id}}" />
-    <p>
-        <input type="text" name="new_door">
-        <button>Create Door</button>
-    </p>
-</form>
 {% endblock %}
