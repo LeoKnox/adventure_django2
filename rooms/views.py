@@ -73,6 +73,7 @@ def room_edit(request, room_id):
             edit_room.height = request.POST.get('height')
         new_door = request.POST.getlist('dooradd') #doesn't but does now!
         for nd in new_door:
+            edit_door = Door.objects.get(id = door_id)
             if nd != "":
                 print("@@@")
             print("!!")
