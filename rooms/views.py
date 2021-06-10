@@ -72,8 +72,9 @@ def room_edit(request, room_id):
         if request.POST.get('height') != "":
             edit_room.height = request.POST.get('height')
         new_door = request.POST.getlist('dooradd') #doesn't but does now!
+        print(new_door)
         for nd in new_door:
-            edit_door = Door.objects.get(id = door_id)
+            edit_door = Door.objects.get(id = nd)
             if nd != "":
                 print("@@@")
             print("!!")
