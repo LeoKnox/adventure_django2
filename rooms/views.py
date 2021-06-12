@@ -74,11 +74,10 @@ def room_edit(request, room_id):
         new_door = request.POST.getlist('dooradd') #doesn't but does now!
         print(new_door)
         for nd in new_door:
-            nd_add = Door(next_room = nd)
-            nd_add.save()
-            edit_room.doors.add(nd_add)
             if nd != "":
-                print("@@@")
+                nd_add = Door(next_room = nd)
+                nd_add.save()
+                edit_room.doors.add(nd_add)
             print("!!")
             print(nd)
         print("--------")
