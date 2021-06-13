@@ -78,10 +78,6 @@ def room_edit(request, room_id):
                 nd_add = Door(next_room = nd)
                 nd_add.save()
                 edit_room.doors.add(nd_add)
-            print("!!")
-            print(nd)
-        print("--------")
-        print(new_door)
         #new_door2 = [new_door[x:x+4] for x in range(0, len(new_door), 4) if x != '']
         print("++++++++")
         #print(new_door2)
