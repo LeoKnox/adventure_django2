@@ -86,16 +86,14 @@ def room_edit(request, room_id):
         edit_room.save()
         print("******")
         print(edit_room)
-        '''
-        for nd in edit_room.doors:
+        for nd in new_door2:
             print(nd)
-            edit_door = Door.objects.get(next_room = nd)
+            edit_door = Door.objects.get(id = nd[0])
             if nd[1] != "":
                 edit_door.wall = nd[1]
             if nd[2] != "":
                 edit_door.location = nd[2]
             edit_door.save()
-        '''
         return redirect('room_edit', room_id)
     return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
 
