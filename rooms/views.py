@@ -116,6 +116,6 @@ def about(request):
 def edit_delete(request, door_id, room_id):
     remove_door = Room.objects.get(pk = room_id)
     remove_door.doors.remove(door_id)
-    second_remove = Door.objects.get(pk = door_id)
-    second_remove.delete(str(door_id))
+    #second_remove = Door.objects.get(pk = door_id)
+    #second_remove.delete(door_id)
     return redirect('room_edit', room_id)
