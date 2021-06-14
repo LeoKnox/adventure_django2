@@ -58,7 +58,7 @@ def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     doors = Room.objects.all()
-    doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)] # delete if other door_dupe later
+    doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
     doors = Room.objects.filter(name__in = doors)
     if request.method == "POST":
         if request.POST.get('name') != "":
@@ -78,7 +78,7 @@ def room_edit(request, room_id):
                 nd_add = Door(next_room = nd)
                 nd_add.save()
                 edit_room.doors.add(nd_add)
-        #new_door2 = [new_door[x:x+4] for x in range(0, len(new_door), 4) if x != '']
+        new_door2 = [new_door[x:x+4] for x in range(0, len(new_door), 4) if x != '']
         new_doors = request.POST.getlist('doors') 
         print("++++++++")
         print(new_doors)
