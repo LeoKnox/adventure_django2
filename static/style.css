@@ -46,7 +46,9 @@ dd {
 }
 
 #borderimg1 {
+    width: 480px;
     border: 40px solid transparent;
-    padding: 15px;
+    padding: 0px;
     border-image: url('border.png') 1 repeat;
+    background-image: url('floor.png');
 }
