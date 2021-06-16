@@ -4,9 +4,21 @@
 {% endblock %}
 
 {% block content %}
+<style> 
+body {
+    color: darkblue;
+}
+
+#borderimg1 { 
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+}
+</style>
 <h1>Map of Room</h1>
 <p>{{ room_id }}</p>
 <a href="{% url 'room_edit' room_id %}">
     <button>Edit</button>
 </a>
+<p id="borderimg1">Room</p>
 {% endblock %}
