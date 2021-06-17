@@ -17,7 +17,7 @@ body {
 <a href="{% url 'room_edit' room_id %}">
     <button>Edit</button>
 </a>
-<div id="borderimg1" style="width:150px; height:{{ room_id }}px;">
+<div id="borderimg1" style="width:150px; height:{{ room_id | add:'60'}}px;">
     <p>Room</p>
 </div>
 {% endblock %}
