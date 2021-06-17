@@ -11,10 +11,13 @@ body {
 
 </style>
 <h1>Map of Room</h1>
+<p>
+{{ room_id }}
+</p>
 <a href="{% url 'room_edit' room_id %}">
     <button>Edit</button>
 </a>
-<div id="borderimg1" style="width:150px; height:150px;">
+<div id="borderimg1" style="width:150px; height:{{ room_id }}px;">
     <p>Room</p>
 </div>
 {% endblock %}
