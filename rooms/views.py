@@ -114,7 +114,11 @@ def about(request):
     return render(request, 'about.html')
 
 def room_map(request, room_id):
-    return render(request, 'room_map.html', {'room_id': room_id})
+    try:
+        room = Room.objects.get(id=room_id)
+    except Room.DoesNotExist:
+        raise Http404('Room does not exist. Go Build it!')
+    return render(request, 'room_map.html', {'room': room})
 
 def edit_delete(request, door_id, room_id):
     remove_door = Room.objects.get(pk = room_id)
