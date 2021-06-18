@@ -9,6 +9,9 @@ body {
     color: darkblue;
 }
 
+#door {
+    margin-left: -40px;
+}
 </style>
 <h1>Map of Room</h1>
 <p>
@@ -18,6 +21,8 @@ body {
     <button>Edit</button>
 </a>
 <div id="borderimg1" style="width:150px; height:{{ room_id | add:'60'}}px;">
+    {% load static %}
+    <img id="door" src="{% static 'images/door.png' %}" />
     <p>Room</p>
 </div>
 {% endblock %}
