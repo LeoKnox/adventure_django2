@@ -116,7 +116,7 @@ def about(request):
 def room_map(request, room_id):
     room = Room.objects.get(id=room_id)
     print(room.height)
-    room_id = 90
+    room_id = 80
     return render(request, 'room_map.html', {'room_id': room_id})
 
 def edit_delete(request, door_id, room_id):
