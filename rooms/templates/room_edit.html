@@ -4,6 +4,15 @@
 {% endblock %}
 
 {% block content %}
+<style> 
+body {
+    color: darkblue;
+}
+
+#door {
+    margin-left: -40px;
+}
+</style>
 <h1>Edit {{ edit_room.name }} Room</h1>
 <p><a href="{% url 'room_map' edit_room.id %}">Map</a></p>
 <form name="create" action= "" method="POST">
@@ -60,4 +69,9 @@
 </p>
     <input type="submit" name="edit_room" Value="Submit Edit" />
 </form>
+<div id="borderimg1" style="width:160px; height:{{ edit_room.length | add:'80'}}px;">
+    {% load static %}
+    <img id="door" src="{% static 'images/door.png' %}" />
+    <p>Room</p>
+</div>
 {% endblock %}
