@@ -69,7 +69,7 @@ body {
 </p>
     <input type="submit" name="edit_room" Value="Submit Edit" />
 </form>
-<div id="borderimg1" style="width:{% widthratio edit_room.width 1 40 %}"px; "height:{% widthratio edit_room.length 1 40 %}px;">
+<div id="borderimg1" style="width:{% widthratio edit_room.width 1 40 %}px; height: {% widthratio edit_room.height 1 40 %}px";>
     {% load static %}
     <img id="door" src="{% static 'images/door.png' %}" />
     <p>Room</p>
