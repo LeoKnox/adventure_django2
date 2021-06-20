@@ -74,7 +74,7 @@ body {
     <img id="door" src="{% static 'images/door.png' %}" />
     <p>Room</p>
 </div>
-{% for d in edit_room.doors %}
+{% for d in edit_room.doors.all %}
     {% if d == 3 %}
         <p>ZZZZ</p>
     {% else %}
