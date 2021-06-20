@@ -75,6 +75,7 @@ body {
     <p>Room</p>
 </div>
 {% for d in edit_room.doors.all %}
+    <p>==={{ d.wall }}</p>
     {% if d == 3 %}
         <p>ZZZZ</p>
     {% else %}
