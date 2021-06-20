@@ -71,15 +71,13 @@ body {
 </form>
 <div id="borderimg1" style="width:{% widthratio edit_room.width 1 40 %}px; height: {% widthratio edit_room.height 1 40 %}px";>
     {% load static %}
-    <img id="door" src="{% static 'images/door.png' %}" />
+    {% for d in edit_room.doors.all %}
+        {% if d.wall == 3 %}
+            <img id="door" src="{% static 'images/door.png' %}" />
+        {% else %}
+            <p>7</p>
+        {% endif %}
+    {% endfor %}
     <p>Room</p>
 </div>
-{% for d in edit_room.doors.all %}
-    <p>==={{ d.wall }}</p>
-    {% if d == 3 %}
-        <p>ZZZZ</p>
-    {% else %}
-        <p>7</p>
-    {% endif %}
-{% endfor %}
 {% endblock %}
