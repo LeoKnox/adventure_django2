@@ -78,7 +78,7 @@ body {
         </div>
         {% elif d.wall == 1 %}
         <p>88888</p>
-        <div style="width:40px; margin-right:{% d.width%}*40px">
+        <div style="width:40px; margin-right:{% widthraio d.width 1 40%}px">
             <img id="door" src="{% static 'images/door.png' %}" />
         </div>
         {% else %}
